@@ -1,9 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.stateVersion = "25.05"; # match system version
+  home.username = "trasha";
+  home.homeDirectory = "/home/trasha";
+  home.stateVersion = "25.05";
 
-  # Programs fi enable
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
@@ -11,7 +12,6 @@
   programs.fzf.enable = true;
   programs.lazygit.enable = true;
 
-  # User packages
   home.packages = with pkgs; [
     xclip
     ripgrep
@@ -28,7 +28,6 @@
     php
   ];
 
-  # Git config
   programs.git.userName = "trasha";
   programs.git.userEmail = "sasha.friis@icloud.com";
 }
