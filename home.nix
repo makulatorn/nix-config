@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, username, homeDirectory, ... }:
 
 {
-  home.stateVersion = "25.05";  # <-- THIS IS REQUIRED NOW
+  home.username = username;
+  home.homeDirectory = homeDirectory;
+  home.stateVersion = "25.05";
 
   programs.zsh.enable = true;
   programs.git.enable = true;
@@ -29,4 +31,3 @@
   programs.git.userName = "trasha";
   programs.git.userEmail = "sasha.friis@icloud.com";
 }
-

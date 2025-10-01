@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -26,7 +26,10 @@
     homeConfigurations = {
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
-        modules = [ ./home.nix ];
+        modules = [
+          # Wrap your home.nix in a module function to inject username/homeDirectory
+          ({ config, pkgs, ... }: import ./home.nix { inherit pkgs; username = "trasha"; homeDirectory = "/home/trasha"; })
+        ];
       };
     };
   };
