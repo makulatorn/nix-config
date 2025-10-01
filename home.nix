@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.username = "trasha";
-  home.homeDirectory = "/home/trasha";
-  home.stateVersion = "25.05";
+  accounts.calendar = {
+    enable = false;
+  };
 
   programs.zsh.enable = true;
   programs.git.enable = true;
