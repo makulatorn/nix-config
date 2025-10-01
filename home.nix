@@ -1,8 +1,9 @@
 { pkgs, ... }:
-#update:
-#sudo nix flake update 
-#sudo nixos-rebuild switch --flake /etc/nixos#nixos
-# Updates both system packages AND home manager packages
+# update:
+# sudo nix flake update
+# sudo nixos-rebuild switch --flake /etc/nixos#nixos
+# Updates both system packages AND Home Manager packages
+
 {
   # Must set this for HM 25.11+
   home.stateVersion = "25.05";
