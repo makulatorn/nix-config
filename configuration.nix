@@ -116,7 +116,7 @@
     wget
     adwaita-qt
     rofi
-    uwufetch
+    nitch
   ];
    fonts = {
     fontconfig.enable = true;
