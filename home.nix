@@ -3,10 +3,6 @@
 {
   home.stateVersion = "25.05";  # match system version
   
-  accounts.calendar = {
-    enable = false;
-  };
-
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
