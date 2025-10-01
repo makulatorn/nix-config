@@ -7,14 +7,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
-
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    # NixOS system
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = system;
@@ -25,7 +23,6 @@
       };
     };
 
-    # Home Manager
     homeConfigurations = {
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
@@ -34,4 +31,3 @@
     };
   };
 }
-
