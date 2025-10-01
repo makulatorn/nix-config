@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  home.stateVersion = "25.05";  # match system version
+  
   accounts.calendar = {
     enable = false;
   };
