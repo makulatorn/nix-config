@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.stateVersion = "25.05"; # required
-
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
@@ -29,3 +27,4 @@
   programs.git.userName = "trasha";
   programs.git.userEmail = "sasha.friis@icloud.com";
 }
+
