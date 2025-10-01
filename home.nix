@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.stateVersion = "25.05";  # match system version
-  
+  home.stateVersion = "25.05"; # required
+
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;

@@ -27,6 +27,10 @@
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
         modules = [ ./home.nix ];
+	username = "trasha";
+	homeDirectory = "/home/trasha";
+	stateVersion = "25.05";
+	system = "x86_64-linux";
       };
     };
   };
