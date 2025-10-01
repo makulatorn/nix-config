@@ -1,4 +1,4 @@
-{
+k{
   description = "Trasha's NixOS + Home Manager flake";
 
   inputs = {
@@ -14,20 +14,24 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
+    # NixOS system
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = system;
         modules = [
           ./configuration.nix
+          home-manager.nixosModules.home-manager
         ];
       };
     };
 
+    # Home Manager
     homeConfigurations = {
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
-        configuration = import ./home.nix { pkgs = pkgs; };
+        modules = [ ./home.nix ];
       };
     };
   };
 }
+
