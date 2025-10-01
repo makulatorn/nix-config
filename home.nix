@@ -1,8 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.stateVersion = "25.05"; # match your NixOS version
+  # Must set this for HM 25.11+
+  home.stateVersion = "25.05";
 
+  # Programs
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
@@ -10,6 +12,7 @@
   programs.fzf.enable = true;
   programs.lazygit.enable = true;
 
+  # Packages
   home.packages = with pkgs; [
     xclip
     ripgrep
@@ -21,11 +24,11 @@
     python312Packages.pip
     python312Packages.pynvim
     arandr
-    rofi
     alacritty
     php
   ];
 
+  # Git config
   programs.git.userName = "trasha";
   programs.git.userEmail = "sasha.friis@icloud.com";
 }

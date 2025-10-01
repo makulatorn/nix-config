@@ -19,16 +19,9 @@
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      trasha = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        modules = [
-          # your home.nix module
-          ./home.nix
+          {
+            home-manager.users.trasha = import ./home.nix { pkgs = pkgs; };
+          }
         ];
       };
     };

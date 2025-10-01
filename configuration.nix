@@ -5,6 +5,10 @@
 { config, pkgs, ... }:
 
 {
+  environment.sessionVariables = {
+    PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH";
+  };
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -111,6 +115,7 @@
     puredata
     wget
     adwaita-qt
+    rofi
   ];
    fonts = {
     fontconfig.enable = true;
