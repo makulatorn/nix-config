@@ -1,9 +1,7 @@
-{ pkgs, username, homeDirectory, ... }:
+{ pkgs, ... }:
 
 {
-  home.username = username;
-  home.homeDirectory = homeDirectory;
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.05"; # match your NixOS version
 
   programs.zsh.enable = true;
   programs.git.enable = true;

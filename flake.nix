@@ -27,8 +27,8 @@
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
         modules = [
-          # Wrap your home.nix in a module function to inject username/homeDirectory
-          ({ config, pkgs, ... }: import ./home.nix { inherit pkgs; username = "trasha"; homeDirectory = "/home/trasha"; })
+          # your home.nix module
+          ./home.nix
         ];
       };
     };
