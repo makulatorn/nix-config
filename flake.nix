@@ -1,4 +1,4 @@
-k{
+{
   description = "Trasha's NixOS + Home Manager flake";
 
   inputs = {
