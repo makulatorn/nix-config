@@ -1,28 +1,34 @@
+
 {
-  description = "Trasha's NixOS config as a flake";
+  description = "Trasha's NixOS + Home Manager flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    cms.url = "path:/home/trasha/web-skole/cms";
   };
 
-  outputs = { self, nixpkgs, home-manager, cms, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }: {
+
+    # NixOS system configuration
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-
           home-manager.nixosModules.home-manager
-          {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.trasha = import ./home.nix;
-            }
         ];
+      };
+    };
+
+    # Home Manager user configuration
+    homeConfigurations = {
+      trasha = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        username = "trasha";
+        homeDirectory = "/home/trasha";
+        configuration = import ./home.nix;
       };
     };
   };
