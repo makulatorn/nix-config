@@ -26,11 +26,8 @@
     homeConfigurations = {
       trasha = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
-        username = "trasha";
-        homeDirectory = "/home/trasha";
         configuration = import ./home.nix { pkgs = pkgs; };
       };
     };
   };
 }
-
