@@ -107,35 +107,10 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    # editors
-    neovim
-    xclip
-    ripgrep
-    fd
-    lazygit
-    fzf
-    unzip
-    nodejs
-    cargo
-    python312Full
-    python312Packages.pip
-    python312Packages.pynvim
-    arandr
-    #dev tools
-    git
-    wget
-    rofi
-    alacritty
-    
-    # Lang
-    php
- 
-    # music
     reaper
     puredata
+    wget
     adwaita-qt
-    picom
-    uwufetch
   ];
    fonts = {
     fontconfig.enable = true;
