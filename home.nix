@@ -30,6 +30,14 @@
     arandr
     alacritty
     php
+    gcc
+    pkgs.gnumake
+    pkgs.pkg-config
+    autoconf
+    automake
+    libtool
+    ninja
+    nodePackages.npm
   ];
 
   # Git config
