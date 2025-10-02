@@ -38,6 +38,7 @@
     libtool
     ninja
     nodePackages.npm
+    tree-sitter
   ];
 
   # Git config
