@@ -55,7 +55,7 @@
 
   # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.desktopManager.xfce.enable = true;
   
   # Enable Qtile
   services.xserver.windowManager.qtile.enable = true;
@@ -117,6 +117,11 @@
     adwaita-qt
     rofi
     nitch
+    pavucontrol
+    networkmanagerapplet
+    xfce.thunar
+    xfce.xfce4-power-manager
+    xfce.xfce4-notifyd
   ];
    fonts = {
     fontconfig.enable = true;
