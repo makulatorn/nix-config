@@ -18,28 +18,18 @@
 
   # Packages
   home.packages = with pkgs; [
-    xclip
-    ripgrep
     fd
-    unzip
-    nodejs
     cargo
-    python312Full
-    python312Packages.pip
-    python312Packages.pynvim
-    arandr
     alacritty
     php
-    gcc
     pkgs.gnumake
     pkgs.pkg-config
-    autoconf
-    automake
-    libtool
-    ninja
+    nodejs
     nodePackages.npm
     tree-sitter
     gimp
+    libreoffice
+    puredata
   ];
 
   # Git config

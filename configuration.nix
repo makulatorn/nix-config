@@ -111,8 +111,6 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    reaper
-    puredata
     wget
     adwaita-qt
     rofi
@@ -122,6 +120,20 @@
     xfce.thunar
     xfce.xfce4-power-manager
     xfce.xfce4-notifyd
+    vintagestory
+    ripgrep
+    xclip
+    unzip
+    python312Full
+    python312Packages.pip
+    python312Packages.pynvim
+    arandr
+    autoconf
+    automake
+    libtool
+    ninja
+    gcc
+    reaper
   ];
    fonts = {
     fontconfig.enable = true;
