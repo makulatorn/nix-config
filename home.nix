@@ -39,6 +39,7 @@
     ninja
     nodePackages.npm
     tree-sitter
+    gimp
   ];
 
   # Git config
