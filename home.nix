@@ -30,6 +30,7 @@
     gimp
     libreoffice
     puredata
+    helvum
   ];
 
   # Git config

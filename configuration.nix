@@ -134,6 +134,9 @@
     ninja
     gcc
     reaper
+    git
+    emacs30
+    zip  
   ];
    fonts = {
     fontconfig.enable = true;
