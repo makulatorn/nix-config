@@ -136,7 +136,8 @@
     reaper
     git
     emacs30
-    zip  
+    zip
+    milkytracker  
   ];
    fonts = {
     fontconfig.enable = true;
