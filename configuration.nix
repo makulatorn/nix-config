@@ -124,9 +124,23 @@
     ripgrep
     xclip
     unzip
+
+    #dev
     python312Full
     python312Packages.pip
-    python312Packages.pynvim
+    python312Packages.django
+    python312Packages.requests
+    python312Packages.httpx
+    python312Packages.uvicorn
+    python312Packages.black
+    python312Packages.isort
+    python312Packages.pylint
+    python312Packages.mypy
+    podman
+    podman-compose
+    git
+    
+    #tools
     arandr
     autoconf
     automake
@@ -134,10 +148,10 @@
     ninja
     gcc
     reaper
-    git
     emacs30
     zip
-    milkytracker  
+    cmake
+    poetry  
   ];
    fonts = {
     fontconfig.enable = true;

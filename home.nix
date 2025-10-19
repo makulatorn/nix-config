@@ -31,6 +31,7 @@
     libreoffice
     puredata
     helvum
+    milkytracker
   ];
 
   # Git config
