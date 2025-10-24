@@ -24,14 +24,13 @@
     php
     pkgs.gnumake
     pkgs.pkg-config
-    nodejs
-    nodePackages.npm
     tree-sitter
     gimp
     libreoffice
     puredata
     helvum
     milkytracker
+    tmux
   ];
 
   # Git config

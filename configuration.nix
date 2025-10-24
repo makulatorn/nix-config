@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   environment.sessionVariables = {
@@ -53,7 +53,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+  };  
+
   services.xserver.videoDrivers = [ "displaylink" "modesetting"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ evdi ];
+
+  services.xserver.displayManager.sessionCommands = ''
+    ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+  '';
+
+
   # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.xfce.enable = true;
@@ -109,6 +120,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  
+  programs.gnupg.agent= {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
@@ -137,10 +153,19 @@
     python312Packages.isort
     python312Packages.pylint
     python312Packages.mypy
+    python312Packages.weasyprint
+    python312Packages.python_magic
     podman
     podman-compose
     git
-    
+    docker    
+    redis
+    postgresql
+    pango
+    cairo
+    glibc
+    file
+
     #tools
     arandr
     autoconf
@@ -154,7 +179,12 @@
     cmake
     poetry
     displaylink
-  ];
+    nodePackages.npm
+    nodejs
+    gnupg
+    pinentry-curses 
+    pass
+ ];
    fonts = {
     fontconfig.enable = true;
     packages = with pkgs; [
