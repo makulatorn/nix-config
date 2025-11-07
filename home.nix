@@ -19,7 +19,6 @@
   # Packages
   home.packages = with pkgs; [
     fd
-    cargo
     alacritty
     php
     pkgs.gnumake

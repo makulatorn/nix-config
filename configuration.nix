@@ -165,6 +165,8 @@
     cairo
     glibc
     file
+    rustc
+    cargo
 
     #tools
     arandr
