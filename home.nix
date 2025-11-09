@@ -11,25 +11,17 @@
   # Programs
   programs.zsh.enable = true;
   programs.git.enable = true;
-  programs.neovim.enable = true;
   programs.btop.enable = true;
-  programs.fzf.enable = true;
   programs.lazygit.enable = true;
 
   # Packages
   home.packages = with pkgs; [
-    fd
     alacritty
-    php
-    pkgs.gnumake
-    pkgs.pkg-config
-    tree-sitter
     gimp
     libreoffice
     puredata
     helvum
     milkytracker
-    tmux
   ];
 
   # Git config

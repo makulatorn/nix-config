@@ -137,10 +137,13 @@
     xfce.thunar
     xfce.xfce4-power-manager
     xfce.xfce4-notifyd
-    vintagestory
     ripgrep
     xclip
     unzip
+    tmux
+    pkgs.gnumake
+    pkgs.pkg-config
+    vintagestory
 
     #dev
     python312Full
@@ -205,10 +208,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+    services.openssh.enable = true;
+    services.openssh.settings.PermitRootLogin = "no";
+    services.openssh.settings.PasswordAuthentication = false;
+    services.openssh.ports = [ 2222 ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+    networking.firewall.allowedTCPPorts = [ 2222 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
