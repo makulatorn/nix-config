@@ -23,7 +23,7 @@
     helvum
     milkytracker
   ];
-
+  
   # Git config
   programs.git.userName = "trasha";
   programs.git.userEmail = "sasha.friis@icloud.com";

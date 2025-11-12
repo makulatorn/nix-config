@@ -90,9 +90,6 @@
   
   # --- Allow unfree packages ---
   nixpkgs.config.allowUnfree = true;
-  xdg.portal.config = {
-    gtk = true;
-  };
 
   # --- System packages ---
   environment.systemPackages = with pkgs; [
@@ -112,9 +109,6 @@
     pkgs.gnumake
     pkgs.pkg-config
     vintagestory
-    waybar
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
     google-chrome
 
     # dev
@@ -144,7 +138,6 @@
     cargo
 
     # tools
-    wdisplays
     arandr
     autoconf
     automake
@@ -162,7 +155,21 @@
     gnupg
     pinentry-curses
     pass
-  ];
+ 
+    # LSP servers
+    pyright
+    bash-language-server
+    typescript-language-server
+    yaml-language-server
+    nixd
+    rust-analyzer
+    marksman   # markdown lsp
+    
+    # formatters/linters
+    prettierd
+    shellcheck
+    shfmt
+ ];
 
   # --- Fonts ---
   fonts = {
