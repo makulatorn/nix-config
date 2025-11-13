@@ -10,6 +10,7 @@
 
   # Programs
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   programs.git.enable = true;
   programs.btop.enable = true;
   programs.lazygit.enable = true;
