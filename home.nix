@@ -16,7 +16,7 @@
 
   # Packages
   home.packages = with pkgs; [
-    alacritty
+    kitty
     gimp
     libreoffice
     puredata
