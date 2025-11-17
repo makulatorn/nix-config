@@ -24,8 +24,6 @@
     milkytracker
   ];
 
-  home.file."config/kitty".source = ./config/kitty;
   home.file."config/qtile".source = ./config/qtile;
-  home.file."config/rofi".source = ./config/rofi;
   home.file."config/picom/picom.conf".source = ./config/picom/picom.conf;
 }
