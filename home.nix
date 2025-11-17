@@ -23,7 +23,6 @@
     helvum
     milkytracker
   ];
-
-  home.file."config/qtile".source = ./config/qtile;
+  home.file."config/qtile/config.py".source = ./config/qtile/config.py;
   home.file."config/picom/picom.conf".source = ./config/picom/picom.conf;
 }

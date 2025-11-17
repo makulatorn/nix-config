@@ -41,6 +41,7 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
+    Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Rofi launcher"),
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
@@ -57,16 +58,18 @@ keys = [
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window left"),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window right"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key(
-        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+        [mod, "control"], "Right", lazy.layout.grow_right(), desc="Grow window to the right"
     ),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "Up", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "Down", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -81,7 +84,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
         "f",
@@ -96,6 +99,10 @@ keys = [
     ),
     Key([mod], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "c", lazy.group.setlayout("columns")),
+    Key([mod], "m", lazy.group.setlayout("monadtall")),
+    Key([mod], "s", lazy.group.setlayout("spiral")),
+
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -139,13 +146,23 @@ for i in groups:
     )
 
 layouts = [
-    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
+    layout.MonadTall(
+	border_focus="#ffffff",
+	border_border="#ffffff",
+	border_width= 4,
+    ),
+    layout.Spiral(
+	border_focus="#ffffff",
+	border_border="ffffff",
+	border_width= 4,
+    ),
+    layout.Columns(
+	border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -164,7 +181,7 @@ extension_defaults = widget_defaults.copy()
 logo = os.path.join(os.path.dirname(libqtile.resources.__file__), "logo.png")
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -172,15 +189,13 @@ screens = [
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
+                        "launch": ("#ffffff", "#333333"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
+                widget.StatusNotifier(),
+                #widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],

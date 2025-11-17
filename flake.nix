@@ -7,23 +7,21 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = system;
+  outputs = { self, nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.users.trasha = import ./home.nix { pkgs = pkgs; };
+            home-manager.users.trasha = import ./home.nix { inherit pkgs; };
           }
         ];
       };
     };
-  };
 }
