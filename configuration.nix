@@ -97,6 +97,7 @@
     adwaita-qt
     rofi
     nitch
+    thefuck
     pavucontrol
     networkmanagerapplet
     xfce.thunar
