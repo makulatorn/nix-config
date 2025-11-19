@@ -162,11 +162,18 @@
     nixd
     rust-analyzer
     marksman   # markdown lsp
+    taplo
+    emmet-ls
     
     # formatters/linters
     prettierd
     shellcheck
     shfmt
+
+    #spellcheckers
+    vscode-langservers-extracted
+    aspell
+    aspellDicts.en
  ];
 
   # --- Fonts ---
