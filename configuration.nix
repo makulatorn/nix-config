@@ -50,9 +50,6 @@
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
   boot.kernelModules = [ "evdi" ];
 
-  # --- Sway Wayland ---
-  programs.sway.enable = false;
-
   # --- Console ---
   console.keyMap = "dk-latin1";
 
