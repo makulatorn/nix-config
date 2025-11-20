@@ -14,7 +14,7 @@
 
     functions = {
       fish_greeting = ''
-        random choice "Make mommy proud~" "Mommy missed you~"
+        random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3"
       '';
     };
 
@@ -26,7 +26,7 @@
 
   programs.git = {
     enable = true;
-    userName = "trasha";
+    userName = "sasha";
     userEmail = "sasha.friis@icloud.com";
   };
 
