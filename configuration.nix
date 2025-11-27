@@ -169,6 +169,7 @@
     prettierd
     shellcheck
     shfmt
+    nodePackages.prettier
 
     #spellcheckers
     vscode-langservers-extracted
