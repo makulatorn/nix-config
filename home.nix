@@ -21,6 +21,7 @@
     shellAliases = {
       nixbuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       nixupdate = "sudo nix flake update";
+      suicide = "sudo shutdown now";
     };
   };
 
