@@ -110,6 +110,8 @@
     pkgs.pkg-config
     vintagestory
     google-chrome
+    transmission-gtk
+    vlc
 
     # dev
     python312Full
@@ -136,6 +138,8 @@
     file
     rustc
     cargo
+    ghc
+    cabal-install
 
     # tools
     arandr
@@ -160,6 +164,7 @@
     pyright
     bash-language-server
     typescript-language-server
+    haskell-language-server
     yaml-language-server
     nixd
     rust-analyzer
