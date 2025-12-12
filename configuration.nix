@@ -39,6 +39,8 @@
     LC_TIME = "da_DK.UTF-8";
   };
 
+  # --- Wayland ---
+
   # --- Disable X11 ---
   services.xserver.enable = true;
   services.xserver.layout = "dk";

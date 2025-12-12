@@ -31,6 +31,13 @@
     userEmail = "sasha.friis@icloud.com";
   };
 
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      epkgs.helm
+    ];
+  };
+
   programs.btop.enable = true;
   programs.lazygit.enable = true;
 
