@@ -14,7 +14,7 @@
 
     functions = {
       fish_greeting = ''
-        random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3"
+        random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3" "You're doing such a good job baby~"
       '';
     };
 
@@ -22,6 +22,7 @@
       nixbuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       nixupdate = "sudo nix flake update";
       suicide = "sudo shutdown now";
+      docker = "sudo docker";
     };
   };
 

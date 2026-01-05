@@ -7,11 +7,13 @@
   };
 
   # --- Imports ---
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # --- Nix settings ---
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = [ "root" "trasha" ];
+  nix.settings.trusted-users = ["root" "trasha"];
 
   # --- Bootloader ---
   boot.loader.systemd-boot.enable = true;
@@ -64,10 +66,8 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
+  services.blueman. enable = true;
   # --- Users ---
   users.users.trasha = {
     isNormalUser = true;
@@ -75,21 +75,17 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
+  environment.variables = {
+    QT_STYLE_OVERRIDE = "adwaita-dark";
+  };
 
   # --- Programs ---
   programs.firefox.enable = true;
-
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
   };
-
   virtualisation.docker.enable = true;
-
-  programs.steam = { enable = true; };
-
-  programs.gamemode.enable = true;
 
   # --- Allow unfree packages ---
   nixpkgs.config.allowUnfree = true;
@@ -132,9 +128,6 @@
     python312Packages.mypy
     python312Packages.weasyprint
     python312Packages.python_magic
-    pipenv
-    python312Packages.pyflakes
-    python312Packages.pytest
     podman
     podman-compose
     git
@@ -149,8 +142,6 @@
     cargo
     ghc
     cabal-install
-    fd
-    direnv
 
     # tools
     arandr
@@ -170,7 +161,7 @@
     gnupg
     pinentry-curses
     pass
-
+ 
     # LSP servers
     pyright
     bash-language-server
@@ -179,31 +170,28 @@
     yaml-language-server
     nixd
     rust-analyzer
-    marksman # markdown lsp
+    marksman   # markdown lsp
     taplo
     emmet-ls
-    haskellPackages.hoogle
-
+    
     # formatters/linters
     prettierd
     shellcheck
     shfmt
     nodePackages.prettier
-    dockfmt
-    ktlint
-    nixfmt
-    stylelint
 
     #spellcheckers
     vscode-langservers-extracted
     aspell
     aspellDicts.en
-  ];
+ ];
 
   # --- Fonts ---
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [ nerd-fonts.fira-code ];
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
   };
 
   # --- OpenSSH ---
