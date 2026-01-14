@@ -5,6 +5,8 @@
 
   programs.zsh.enable = true;
 
+  home.sessionPath = [ "$HOME/.npm-global/bin" ];
+
   programs.fish = {
     enable = true;
 
@@ -36,6 +38,11 @@
     enable = true;
     extraPackages = epkgs: [
       epkgs.helm
+      epkgs.astro-ts-mode
+      epkgs.lsp-mode
+      epkgs.lsp-ui
+      epkgs.use-package
+      epkgs.web-mode
     ];
   };
 

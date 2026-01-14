@@ -151,6 +151,8 @@
     cabal-install
     fd
     direnv
+    clojure
+    typescript
 
     # tools
     arandr
@@ -170,6 +172,8 @@
     gnupg
     pinentry-curses
     pass
+    babashka
+    leiningen
 
     # LSP servers
     pyright
