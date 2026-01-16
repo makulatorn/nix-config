@@ -38,8 +38,7 @@
   };
 
   # --- Wayland ---
-
-  # --- Disable X11 ---
+    # --- Disable X11 ---
   services.xserver.enable = true;
   services.xserver.layout = "dk";
   services.displayManager.sddm = {
@@ -153,6 +152,8 @@
     direnv
     clojure
     typescript
+    conda
+    pyenv
 
     # tools
     arandr
@@ -187,6 +188,7 @@
     taplo
     emmet-ls
     haskellPackages.hoogle
+    clojure-lsp
 
     # formatters/linters
     prettierd
@@ -197,6 +199,7 @@
     ktlint
     nixfmt
     stylelint
+    cljfmt
 
     #spellcheckers
     vscode-langservers-extracted

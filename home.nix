@@ -43,13 +43,22 @@
       epkgs.lsp-ui
       epkgs.use-package
       epkgs.web-mode
+      epkgs.treesit-grammars.with-all-grammars
     ];
   };
+
+  programs.neovim = { enable = true; };
 
   programs.btop.enable = true;
   programs.lazygit.enable = true;
 
   home.packages = with pkgs; [
+    (tree-sitter.withPlugins (p: [
+      p.tree-sitter-typescript
+      p.tree-sitter-tsx
+      p.tree-sitter-html
+      p.tree-sitter-javascript
+    ]))
     kitty
     gimp
     libreoffice
