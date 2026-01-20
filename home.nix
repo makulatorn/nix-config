@@ -7,6 +7,11 @@
 
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
+  home.sessionVariables = {
+    DOOMDIR = "/home/trasha/.config/doom";
+    DOOMLOCALDIR = "/home/trasha/.emacs.d/.local";
+  };
+
   programs.fish = {
     enable = true;
 
@@ -25,6 +30,9 @@
       nixupdate = "sudo nix flake update";
       suicide = "sudo shutdown now";
       docker = "sudo docker";
+      doomconf = "cd /home/trasha/.config/doom";
+      doomfresh =
+        "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
     };
   };
 
@@ -32,19 +40,6 @@
     enable = true;
     userName = "sasha";
     userEmail = "sasha.friis@icloud.com";
-  };
-
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: [
-      epkgs.helm
-      epkgs.astro-ts-mode
-      epkgs.lsp-mode
-      epkgs.lsp-ui
-      epkgs.use-package
-      epkgs.web-mode
-      epkgs.treesit-grammars.with-all-grammars
-    ];
   };
 
   programs.neovim = { enable = true; };

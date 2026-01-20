@@ -38,9 +38,12 @@
   };
 
   # --- Wayland ---
-    # --- Disable X11 ---
-  services.xserver.enable = true;
-  services.xserver.layout = "dk";
+  # --- Disable X11 ---
+  # Find this section and update it
+  services.xserver = {
+    enable = true;
+    xkb.layout = "dk";
+  };
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = false;
@@ -54,7 +57,7 @@
 
   # --- Printing & Sound ---
   services.printing.enable = true;
-  services.pulseaudio.enable = false;
+  #services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -93,6 +96,8 @@
   # --- Allow unfree packages ---
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
+
   programs.command-not-found.enable = true;
 
   # --- System packages ---
@@ -115,7 +120,7 @@
     pkgs.pkg-config
     vintagestory
     google-chrome
-    transmission-gtk
+    transmission_3-gtk
     vlc
 
     # dev
@@ -197,7 +202,7 @@
     nodePackages.prettier
     dockfmt
     ktlint
-    nixfmt
+    nixfmt-classic
     stylelint
     cljfmt
 
@@ -210,7 +215,7 @@
   # --- Fonts ---
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [ nerd-fonts.fira-code ];
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
   };
 
   # --- OpenSSH ---
@@ -223,7 +228,7 @@
   networking.firewall.allowedTCPPorts = [ 2222 ];
 
   # --- State version ---
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
 
   # --- Picom (still enabled if needed) ---
   services.picom = {
