@@ -30,6 +30,7 @@
       nixupdate = "sudo nix flake update";
       suicide = "sudo shutdown now";
       docker = "sudo docker";
+      dkill = "sudo docker rm --force";
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
@@ -40,6 +41,16 @@
     enable = true;
     userName = "sasha";
     userEmail = "sasha.friis@icloud.com";
+
+    aliases = {
+      lgg = "log --oneline --graph";
+      lga = "log --all";
+      lgn = "log -n";
+      fuck = "commit --amend --no-edit";
+      fuuck = "commit --amend -a";
+      pushf = "push --force-with-lease";
+
+    };
   };
 
   programs.neovim = { enable = true; };
@@ -60,5 +71,6 @@
     puredata
     helvum
     milkytracker
+    wordnet
   ];
 }
