@@ -17,6 +17,10 @@ let
     clojure
     babashka
     leiningen
+    sbcl
+    jq
+    pandoc
+    tidy-viewer
   ];
 
   # --- LSP Servers (For Doom Emacs) ---
