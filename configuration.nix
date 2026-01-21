@@ -106,7 +106,7 @@
     adwaita-qt
     rofi
     nitch
-    thefuck
+    pay-respects
     pavucontrol
     networkmanagerapplet
     xfce.thunar
@@ -120,25 +120,11 @@
     pkgs.pkg-config
     vintagestory
     google-chrome
-    transmission_3-gtk
+    transmission_4-gtk
     vlc
+    sqlite
 
     # dev
-    python312Full
-    python312Packages.pip
-    python312Packages.django
-    python312Packages.requests
-    python312Packages.httpx
-    python312Packages.uvicorn
-    python312Packages.black
-    python312Packages.isort
-    python312Packages.pylint
-    python312Packages.mypy
-    python312Packages.weasyprint
-    python312Packages.python_magic
-    pipenv
-    python312Packages.pyflakes
-    python312Packages.pytest
     podman
     podman-compose
     git
@@ -149,73 +135,21 @@
     cairo
     glibc
     file
-    rustc
-    cargo
-    ghc
-    cabal-install
-    fd
     direnv
-    clojure
-    typescript
-    conda
-    pyenv
 
     # tools
     arandr
-    autoconf
-    automake
-    libtool
-    ninja
-    gcc
     reaper
-    emacs30
-    zip
-    cmake
-    poetry
     displaylink
-    nodePackages.npm
-    nodejs
-    gnupg
-    pinentry-curses
-    pass
-    babashka
-    leiningen
-
-    # LSP servers
-    pyright
-    bash-language-server
-    typescript-language-server
-    haskell-language-server
-    yaml-language-server
-    nixd
-    rust-analyzer
-    marksman # markdown lsp
-    taplo
-    emmet-ls
-    haskellPackages.hoogle
-    clojure-lsp
-
-    # formatters/linters
-    prettierd
-    shellcheck
-    shfmt
-    nodePackages.prettier
-    dockfmt
-    ktlint
-    nixfmt-classic
-    stylelint
-    cljfmt
-
-    #spellcheckers
-    vscode-langservers-extracted
-    aspell
-    aspellDicts.en
   ];
 
   # --- Fonts ---
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+      nerd-fonts.symbols-only # Recommended for icons
+    ];
   };
 
   # --- OpenSSH ---
@@ -228,7 +162,7 @@
   networking.firewall.allowedTCPPorts = [ 2222 ];
 
   # --- State version ---
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 
   # --- Picom (still enabled if needed) ---
   services.picom = {

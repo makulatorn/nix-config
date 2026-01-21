@@ -1,9 +1,84 @@
 { pkgs, ... }:
+let
+  # --- Language Runtimes & Managers ---
+  languages = with pkgs; [
+    python3
+    python3Packages.pip
+    conda
+    pyenv
+    pipenv
+    poetry
+    nodejs
+    typescript
+    rustc
+    cargo
+    ghc
+    cabal-install
+    clojure
+    babashka
+    leiningen
+  ];
 
-{
-  home.stateVersion = "25.05";
+  # --- LSP Servers (For Doom Emacs) ---
+  lspServers = with pkgs; [
+    pyright
+    bash-language-server
+    typescript-language-server
+    haskell-language-server
+    yaml-language-server
+    nixd
+    rust-analyzer
+    marksman
+    taplo
+    emmet-ls
+    clojure-lsp
+    vscode-langservers-extracted # Includes HTML/CSS/JSON/ESLint
+  ];
 
-  programs.zsh.enable = true;
+  # --- Formatters & Linters ---
+  lintFormat = with pkgs; [
+    python3Packages.black
+    python3Packages.isort
+    python3Packages.pylint
+    python3Packages.mypy
+    python3Packages.pyflakes
+    python3Packages.pytest
+    prettierd
+    shellcheck
+    shfmt
+    dockfmt
+    ktlint
+    nixfmt-classic
+    stylelint
+    cljfmt
+  ];
+
+  # --- Build Tools & Dev Utilities ---
+  devTools = with pkgs; [
+    gnumake
+    pkg-config
+    autoconf
+    automake
+    libtool
+    ninja
+    gcc
+    cmake
+    fd
+    ripgrep
+    tmux
+    git
+    ghc
+    haskellPackages.hoogle
+    python3Packages.django
+    python3Packages.requests
+    python3Packages.httpx
+    python3Packages.uvicorn
+    python3Packages.weasyprint
+    python3Packages.python-magic
+  ];
+
+in {
+  home.stateVersion = "25.11";
 
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
@@ -12,11 +87,13 @@
     DOOMLOCALDIR = "/home/trasha/.emacs.d/.local";
   };
 
+  programs.zsh.enable = true;
+
   programs.fish = {
     enable = true;
 
     shellInit = ''
-      thefuck --alias | source
+      pay-respects fish --alias | source
     '';
 
     functions = {
@@ -39,38 +116,52 @@
 
   programs.git = {
     enable = true;
-    userName = "sasha";
-    userEmail = "sasha.friis@icloud.com";
-
-    aliases = {
-      lgg = "log --oneline --graph";
-      lga = "log --all";
-      lgn = "log -n";
-      fuck = "commit --amend --no-edit";
-      fuuck = "commit --amend -a";
-      pushf = "push --force-with-lease";
-
+    settings = {
+      user = {
+        name = "sasha";
+        email = "sasha.friis@icloud.com";
+      };
+      alias = {
+        lgg = "log --oneline --graph";
+        lga = "log --all";
+        lgn = "log -n";
+        fuck = "commit --amend --no-edit";
+        fuuck = "commit --amend -a";
+        pushf = "push --force-with-lease";
+      };
     };
   };
 
   programs.neovim = { enable = true; };
 
+  programs.vscode = {
+    enable = true;
+    profiles.default = { };
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.btop.enable = true;
   programs.lazygit.enable = true;
 
-  home.packages = with pkgs; [
-    (tree-sitter.withPlugins (p: [
-      p.tree-sitter-typescript
-      p.tree-sitter-tsx
-      p.tree-sitter-html
-      p.tree-sitter-javascript
-    ]))
-    kitty
-    gimp
-    libreoffice
-    puredata
-    helvum
-    milkytracker
-    wordnet
-  ];
+  home.packages = with pkgs;
+    [
+      emacs30
+      kitty
+      gimp
+      libreoffice
+      puredata
+      helvum
+      milkytracker
+      wordnet
+      reaper
+      gnupg
+      pinentry-curses
+      pass
+      aspell
+      aspellDicts.en
+    ] ++ languages ++ lspServers ++ lintFormat ++ devTools;
 }
