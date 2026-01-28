@@ -53,12 +53,9 @@
   boot = {
     initrd.availableKernelModules = [ "rtsx_pci_sdmmc" "rtsx_pci" ];
 
-    kernelModules = [ "rtsx_pci_sdmmc" "evdi"];
+    kernelModules = [ "rtsx_pci_sdmmc" "evdi" ];
 
-    kernelParams = [
-      "pcie_aspm=off"
-      "rtsx_pci.aspm_enabled=0"
-    ];
+    kernelParams = [ "pcie_aspm=off" "rtsx_pci.aspm_enabled=0" ];
   };
   # --- Console ---
   console.keyMap = "dk-latin1";
@@ -155,6 +152,7 @@
     arandr
     reaper
     displaylink
+    nix-search
   ];
 
   # --- Fonts ---
