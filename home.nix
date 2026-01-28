@@ -79,6 +79,7 @@ let
     python3Packages.uvicorn
     python3Packages.weasyprint
     python3Packages.python-magic
+    javaPackages.compiler.openjdk25
   ];
 
 in {
@@ -111,10 +112,19 @@ in {
       nixupdate = "sudo nix flake update";
       suicide = "sudo shutdown now";
       docker = "sudo docker";
+      dgitconf = "git config --global --add safe.directory /app";
+      pre-commit = "pre-commit run --all-files";
       dkill = "sudo docker rm --force";
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
+      dcl = "docker compose -f docker-compose.local.yaml";
+      dup = "dcl up -d";
+      ddown = "dcl down";
+      drestart = "dcl restart app";
+      dlog = "dcl logs -f";
+      dapplog = "dcl logs -f app";
+      dbash = "dcl exec app bash";
     };
   };
 

@@ -50,8 +50,16 @@
   };
   services.xserver.windowManager.qtile.enable = true;
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
-  boot.kernelModules = [ "evdi" ];
+  boot = {
+    initrd.availableKernelModules = [ "rtsx_pci_sdmmc" "rtsx_pci" ];
 
+    kernelModules = [ "rtsx_pci_sdmmc" "evdi"];
+
+    kernelParams = [
+      "pcie_aspm=off"
+      "rtsx_pci.aspm_enabled=0"
+    ];
+  };
   # --- Console ---
   console.keyMap = "dk-latin1";
 
@@ -74,11 +82,14 @@
   users.users.trasha = {
     isNormalUser = true;
     description = "trasha";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" ];
   };
 
   environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
 
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
   # --- Programs ---
   programs.firefox.enable = true;
 
@@ -88,6 +99,10 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   programs.steam = { enable = true; };
 
@@ -102,6 +117,7 @@
 
   # --- System packages ---
   environment.systemPackages = with pkgs; [
+    udiskie
     wget
     adwaita-qt
     rofi
@@ -125,10 +141,8 @@
     sqlite
 
     # dev
-    podman
     podman-compose
     git
-    docker
     redis
     postgresql
     pango
@@ -159,8 +173,8 @@
   services.openssh.ports = [ 2222 ];
 
   # --- Firewall ---
-  networking.firewall.allowedTCPPorts = [ 2222 ];
-
+  networking.firewall.allowedTCPPorts = [ 8080 1521 ];
+  networking.firewall.trustedInterfaces = [ "podman0" ];
   # --- State version ---
   system.stateVersion = "25.11";
 
