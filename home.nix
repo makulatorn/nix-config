@@ -59,6 +59,7 @@ let
 
   # --- Build Tools & Dev Utilities ---
   devTools = with pkgs; [
+    nix-search
     gnumake
     pkg-config
     autoconf
@@ -113,14 +114,14 @@ in {
       suicide = "sudo shutdown now";
       docker = "sudo docker";
       dgitconf = "git config --global --add safe.directory /app";
-      pre-commit = "pre-commit run --all-files";
+      pre-commit = "dcl exec app pre-commit run --all-files";
       dkill = "sudo docker rm --force";
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
       dcl = "docker compose -f docker-compose.local.yaml";
       dup = "dcl up -d";
-      ddown = "dcl down";
+      ddown = "dcl down --remove-orphans";
       drestart = "dcl restart app";
       dlog = "dcl logs -f";
       dapplog = "dcl logs -f app";
@@ -139,8 +140,9 @@ in {
         lgg = "log --oneline --graph";
         lga = "log --all";
         lgn = "log -n";
+        whoops = "commit --amend";
         fuck = "commit --amend --no-edit";
-        fuuck = "commit --amend -a";
+        FUCK = "commit --amend -a";
         pushf = "push --force-with-lease";
       };
     };

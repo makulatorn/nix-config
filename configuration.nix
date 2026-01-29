@@ -152,7 +152,6 @@
     arandr
     reaper
     displaylink
-    nix-search
   ];
 
   # --- Fonts ---
