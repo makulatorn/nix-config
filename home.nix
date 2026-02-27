@@ -119,13 +119,6 @@ in {
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
-      dcl = "docker compose -f docker-compose.local.yaml";
-      dup = "dcl up -d";
-      ddown = "dcl down --remove-orphans";
-      drestart = "dcl restart app";
-      dlog = "dcl logs -f";
-      dapplog = "dcl logs -f app";
-      dbash = "dcl exec app bash";
     };
   };
 
