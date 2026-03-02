@@ -147,6 +147,7 @@
     glibc
     file
     direnv
+    dbeaver-bin
 
     # tools
     arandr
