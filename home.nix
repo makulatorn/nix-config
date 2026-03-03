@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  # --- Language Runtimes & Managers ---
+  # --- LANG RUNTIME/MANAGERS ---
   languages = with pkgs; [
     python3
     python3Packages.pip
@@ -23,7 +23,7 @@ let
     tidy-viewer
   ];
 
-  # --- LSP Servers (For Doom Emacs) ---
+  # --- LSP ---
   lspServers = with pkgs; [
     pyright
     bash-language-server
@@ -36,10 +36,10 @@ let
     taplo
     emmet-ls
     clojure-lsp
-    vscode-langservers-extracted # Includes HTML/CSS/JSON/ESLint
+    vscode-langservers-extracted
   ];
 
-  # --- Formatters & Linters ---
+  # --- FORMATTERS/LINTERS ---
   lintFormat = with pkgs; [
     python3Packages.black
     python3Packages.isort
@@ -57,7 +57,7 @@ let
     cljfmt
   ];
 
-  # --- Build Tools & Dev Utilities ---
+  # --- BUILD TOOLS ---
   devTools = with pkgs; [
     nix-search
     gnumake

@@ -1,28 +1,28 @@
 { config, pkgs, lib, ... }:
 
 {
-  # --- Session PATH ---
+  # --- SESSION PATH ---
   environment.sessionVariables = {
     PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH";
   };
 
-  # --- Imports ---
+  # --- IMPORTS ---
   imports = [ ./hardware-configuration.nix ];
 
-  # --- Nix settings ---
+  # --- NIX SETTINGS ---
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "root" "trasha" ];
 
-  # --- Bootloader ---
+  # --- BOOTLOADER ---
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # --- Networking ---
+  # --- NETWORK ---
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-  # --- Time & Locale ---
+  # --- TIME LOCALE ---
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = {
@@ -37,9 +37,7 @@
     LC_TIME = "da_DK.UTF-8";
   };
 
-  # --- Wayland ---
-  # --- Disable X11 ---
-  # Find this section and update it
+  # --- WAYLAND/X11 ---
   services.xserver = {
     enable = true;
     xkb.layout = "dk";
@@ -57,10 +55,10 @@
 
     kernelParams = [ "pcie_aspm=off" "rtsx_pci.aspm_enabled=0" ];
   };
-  # --- Console ---
+  # --- CONSOLE ---
   console.keyMap = "dk-latin1";
 
-  # --- Printing & Sound ---
+  # --- PRINT/SOUND ---
   services.printing.enable = true;
   #services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -75,7 +73,7 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # --- Users ---
+  # --- USERS ---
   users.users.trasha = {
     isNormalUser = true;
     description = "trasha";
@@ -87,7 +85,8 @@
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
-  # --- Programs ---
+
+  # --- PROGRAMS ---
   programs.firefox.enable = true;
 
   programs.gnupg.agent = {
@@ -105,14 +104,14 @@
 
   programs.gamemode.enable = true;
 
-  # --- Allow unfree packages ---
+  # --- ALLOW UNFREE PKGS ---
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
 
   programs.command-not-found.enable = true;
 
-  # --- System packages ---
+  # --- SYS PKGS ---
   environment.systemPackages = with pkgs; [
     udiskie
     wget
@@ -137,7 +136,7 @@
     vlc
     sqlite
 
-    # dev
+    # DEV
     podman-compose
     git
     redis
@@ -148,20 +147,18 @@
     file
     direnv
     dbeaver-bin
+    microsoft-edge
 
-    # tools
+    # TOOLS
     arandr
     reaper
     displaylink
   ];
 
-  # --- Fonts ---
+  # --- FONTS ---
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-      nerd-fonts.symbols-only # Recommended for icons
-    ];
+    packages = with pkgs; [ nerd-fonts.fira-code nerd-fonts.symbols-only ];
   };
 
   # --- OpenSSH ---
@@ -170,13 +167,13 @@
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.ports = [ 2222 ];
 
-  # --- Firewall ---
+  # --- FIREWALL ---
   networking.firewall.allowedTCPPorts = [ 8080 1521 ];
   networking.firewall.trustedInterfaces = [ "podman0" ];
-  # --- State version ---
+  # --- STATE VERSION ---
   system.stateVersion = "25.11";
 
-  # --- Picom (still enabled if needed) ---
+  # --- PICOM ---
   services.picom = {
     enable = true;
     package = pkgs.picom;
