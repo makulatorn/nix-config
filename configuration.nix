@@ -132,6 +132,7 @@
     pkgs.pkg-config
     vintagestory
     google-chrome
+    microsoft-edge
     transmission_4-gtk
     vlc
     sqlite
@@ -147,7 +148,7 @@
     file
     direnv
     dbeaver-bin
-    microsoft-edge
+    quickemu
 
     # TOOLS
     arandr
