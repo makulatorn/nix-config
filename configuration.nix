@@ -149,6 +149,7 @@
     direnv
     dbeaver-bin
     quickemu
+    quickgui
 
     # TOOLS
     arandr
