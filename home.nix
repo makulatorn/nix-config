@@ -20,6 +20,7 @@ let
     sbcl
     jq
     pandoc
+    basedpyright
     tidy-viewer
   ];
 
