@@ -25,7 +25,7 @@ let
 
   # --- LSP ---
   lspServers = with pkgs; [
-    pyright
+    basedpyright
     ruff
     bash-language-server
     typescript-language-server
