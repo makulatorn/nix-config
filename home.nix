@@ -20,13 +20,13 @@ let
     sbcl
     jq
     pandoc
-    basedpyright
     tidy-viewer
   ];
 
   # --- LSP ---
   lspServers = with pkgs; [
     pyright
+    ruff
     bash-language-server
     typescript-language-server
     haskell-language-server
@@ -42,11 +42,7 @@ let
 
   # --- FORMATTERS/LINTERS ---
   lintFormat = with pkgs; [
-    python3Packages.black
-    python3Packages.isort
-    python3Packages.pylint
     python3Packages.mypy
-    python3Packages.pyflakes
     python3Packages.pytest
     prettierd
     shellcheck
