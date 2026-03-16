@@ -77,7 +77,7 @@
   users.users.trasha = {
     isNormalUser = true;
     description = "trasha";
-    extraGroups = [ "networkmanager" "wheel" "storage" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" "docker" ];
   };
 
   environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
