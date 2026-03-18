@@ -155,6 +155,7 @@
     arandr
     reaper
     displaylink
+    imagemagick
   ];
 
   # --- FONTS ---
