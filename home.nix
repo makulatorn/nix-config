@@ -116,6 +116,7 @@ in {
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
+      doomurder = "pkill -9 emacs && doom sync";
     };
   };
 
