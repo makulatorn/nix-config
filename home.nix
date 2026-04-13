@@ -155,7 +155,8 @@ in {
 
   home.packages = with pkgs;
     [
-      vifm-full
+      navi
+      yazi
       emacs30
       kitty
       gimp
