@@ -111,7 +111,6 @@ in {
       suicide = "sudo shutdown now";
       docker = "sudo docker";
       dgitconf = "git config --global --add safe.directory /app";
-      pre-commit = "dcl exec app pre-commit run --all-files";
       dkill = "sudo docker rm --force";
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
