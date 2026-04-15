@@ -41,7 +41,7 @@
   services.xserver = {
     enable = true;
     xkb.layout = "dk";
-    xkbOptions = "ctrl:swapscaps";
+    xkb.options = "ctrl:swapcaps";
   };
   services.displayManager.sddm = {
     enable = true;
