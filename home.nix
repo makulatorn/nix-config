@@ -172,8 +172,21 @@ in {
   programs.btop.enable = true;
   programs.lazygit.enable = true;
 
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        useGrimAdapter = true;
+        showDesktopNotification = true;
+      };
+    };
+  };
+
   home.packages = with pkgs;
     [
+      xdotool
+      grim
+      flameshot
       navi
       yazi
       emacs30

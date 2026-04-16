@@ -42,6 +42,7 @@
     enable = true;
     xkb.layout = "us,dk";
     xkb.options = "ctrl:swapcaps";
+    xkb.variant = "altgr-intl";
   };
 
   console = { useXkbConfig = true; };
