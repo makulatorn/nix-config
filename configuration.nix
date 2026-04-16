@@ -43,10 +43,12 @@
     xkb.layout = "dk";
     xkb.options = "ctrl:swapcaps";
   };
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = false;
   };
+
   services.xserver.windowManager.qtile.enable = true;
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
   boot = {
