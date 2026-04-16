@@ -184,7 +184,6 @@ in {
 
   home.packages = with pkgs;
     [
-      xdotool
       grim
       flameshot
       navi

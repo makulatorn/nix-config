@@ -270,7 +270,11 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
-    "type:keyboard": InputConfig(kb_layout="us,dk", kb_options="ctrl:swapcaps"),
+    "type:keyboard": InputConfig(
+        kb_layout="us,dk",
+        kb_options="ctrl:swapcaps",
+        kb_variant="altgr-intl",
+    ),
 }
 # xcursor theme (string or None) and size (integer) for Wayland backend
 wl_xcursor_theme = None
