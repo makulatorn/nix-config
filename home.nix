@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   # --- LANG RUNTIME/MANAGERS ---
   languages = with pkgs; [
@@ -81,13 +81,18 @@ let
   ];
 
 in {
+  home.file = {
+    ".config/qtile/config.py".source = ./dotfiles/qtile/config.py;
+    ".config/qtile/autostart.sh".source = ./dotfiles/qtile/autostart.sh;
+  };
+
   home.stateVersion = "25.11";
 
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
   home.sessionVariables = {
-    DOOMDIR = "/home/trasha/.config/doom";
-    DOOMLOCALDIR = "/home/trasha/.emacs.d/.local";
+    DOOMDIR = "${config.home.homeDirectory}/.config/doom";
+    DOOMLOCALDIR = "${config.home.homeDirectory}/.emacs.d/.local";
   };
 
   programs.zsh.enable = true;
