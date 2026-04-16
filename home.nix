@@ -82,8 +82,14 @@ let
 
 in {
   home.file = {
-    ".config/qtile/config.py".source = ./. + "/dotfiles/qtile/config.py";
-    ".config/qtile/autostart.sh".source = ./. + "/dotfiles/qtile/autostart.sh";
+    ".config/qtile/config.py" = {
+      source = ./dotfiles/qtile/config.py;
+      force = true;
+    };
+    ".config/qtile/autostart.sh" = {
+      source = ./dotfiles/qtile/autostart.sh;
+      force = true;
+    };
   };
 
   home.stateVersion = "25.11";

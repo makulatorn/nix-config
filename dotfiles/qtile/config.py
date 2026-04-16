@@ -211,7 +211,7 @@ screens = [
                 widget.KeyboardLayout(
                     configured_keyboards=["us", "dk"],
                     display_map={"us": "US", "dk": "DK"},
-                    fmt="KB: {}",
+                    fmt="LAY: {}",
                     options="ctrl:swapcaps",
                 ),
                 widget.Clock(format="%d-%m %a %I:%M %p"),
