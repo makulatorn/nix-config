@@ -37,12 +37,14 @@
     LC_TIME = "da_DK.UTF-8";
   };
 
-  # --- WAYLAND/X11 ---
+  # --- WAYLAND/X11 --
   services.xserver = {
     enable = true;
-    xkb.layout = "dk";
+    xkb.layout = "us,dk";
     xkb.options = "ctrl:swapcaps";
   };
+
+  console = { useXkbConfig = true; };
 
   services.displayManager.sddm = {
     enable = true;
@@ -58,8 +60,6 @@
 
     kernelParams = [ "pcie_aspm=off" "rtsx_pci.aspm_enabled=0" ];
   };
-  # --- CONSOLE ---
-  console.keyMap = "dk-latin1";
 
   # --- PRINT/SOUND ---
   services.printing.enable = true;
