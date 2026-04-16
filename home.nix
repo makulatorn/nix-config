@@ -56,6 +56,7 @@ let
 
   # --- BUILD TOOLS ---
   devTools = with pkgs; [
+    pay-respects
     nix-search
     gnumake
     pkg-config
@@ -90,6 +91,12 @@ in {
       source = ./dotfiles/qtile/autostart.sh;
       force = true;
     };
+
+    ".config/kitty" = {
+      source = ./dotfiles/kitty;
+      recursive = true;
+      force = true;
+    };
   };
 
   home.stateVersion = "25.11";
@@ -107,6 +114,7 @@ in {
     enable = true;
 
     shellInit = ''
+      set -gx _PR_SHELL fish
       pay-respects fish --alias | source
     '';
 
