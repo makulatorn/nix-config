@@ -184,6 +184,7 @@ in {
 
   home.packages = with pkgs;
     [
+      mixxx
       grim
       flameshot
       navi
