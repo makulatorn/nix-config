@@ -98,7 +98,11 @@
     pinentryPackage = pkgs.pinentry-curses;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = { enable = false; };
+  };
+
   virtualisation.podman = {
     enable = true;
     defaultNetwork.settings.dns_enabled = true;
