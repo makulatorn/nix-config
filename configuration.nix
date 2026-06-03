@@ -185,4 +185,6 @@
     enable = true;
     package = pkgs.picom;
   };
+
+  services.guix.enable = true;
 }
