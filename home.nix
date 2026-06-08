@@ -114,6 +114,7 @@ in {
     enable = true;
 
     shellInit = ''
+      set -gx PATH $HOME/.emacs.d/bin $PATH
       set -gx PATH $HOME/.guix-profile/bin $PATH
       set -gx GUIX_LOCPATH $HOME/.guix-profile/lib/locale
       set -gx _PR_SHELL fish
@@ -138,7 +139,7 @@ in {
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
       doomurder = "pkill -9 emacs && doom sync";
       easypodup =
-        "podman start oracle-free && podman compose -f docker-compose.local.yaml.up";
+        "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
       easypodown =
         "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
     };
