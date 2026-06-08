@@ -114,6 +114,8 @@ in {
     enable = true;
 
     shellInit = ''
+      set -gx PATH $HOME/.guix-profile/bin $PATH
+      set -gx GUIX_LOCPATH $HOME/.guix-profile/lib/locale
       set -gx _PR_SHELL fish
       pay-respects fish --alias | source
     '';
