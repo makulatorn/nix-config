@@ -135,6 +135,10 @@ in {
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
       doomurder = "pkill -9 emacs && doom sync";
+      easypodup =
+        "podman start oracle-free && podman compose -f docker-compose.local.yaml.up";
+      easypodown =
+        "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
     };
   };
 
