@@ -209,8 +209,8 @@ screens = [
                 widget.Battery(),
                 # widget.Systray(),
                 widget.KeyboardLayout(
-                    configured_keyboards=["us", "dk"],
-                    display_map={"us": "US", "dk": "DK"},
+                    configured_keyboards=["us", "dk", "us(colemak_dh)"],
+                    display_map={"us": "US", "dk": "DK", "us(colemak_dh)": "CMK"},
                     fmt="LAY: {}",
                     options="ctrl:swapcaps",
                 ),
@@ -271,9 +271,9 @@ auto_minimize = True
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
     "type:keyboard": InputConfig(
-        kb_layout="us,dk",
+        kb_layout="us,dk,us",
         kb_options="ctrl:swapcaps",
-        kb_variant="altgr-intl",
+        kb_variant="altgr-intl,,colemak_dh",
     ),
 }
 # xcursor theme (string or None) and size (integer) for Wayland backend

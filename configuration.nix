@@ -40,11 +40,11 @@
   # --- WAYLAND/X11 --
   services.xserver = {
     enable = true;
-    xkb.layout = "us,dk";
+    xkb.layout = "us,dk,us";
     xkb.options = "ctrl:swapcaps";
-    xkb.variant = "altgr-intl";
+    xkb.variant =
+      "altgr-intl,,colemak_dh"; # third variant = colemak_dh on us base
   };
-
   console = { useXkbConfig = true; };
 
   services.displayManager.sddm = {
