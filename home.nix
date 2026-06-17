@@ -79,6 +79,7 @@ let
     python3Packages.weasyprint
     python3Packages.python-magic
     javaPackages.compiler.openjdk25
+    pre-commit
   ];
 
 in {
