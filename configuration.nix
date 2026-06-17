@@ -165,6 +165,7 @@
     reaper
     displaylink
     imagemagick
+    fzf
   ];
 
   # --- FONTS ---
