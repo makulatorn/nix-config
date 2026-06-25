@@ -166,6 +166,7 @@
     displaylink
     imagemagick
     fzf
+    feh
   ];
 
   # --- FONTS ---
@@ -189,7 +190,11 @@
   # --- PICOM ---
   services.picom = {
     enable = true;
-    package = pkgs.picom;
+    activeOpacity = 0.95;
+    inactiveOpacity = 0.8;
+    vSync = true;
+    backend = "glx";
+    settings = { opacity-rules = [ "100:class_g = 'Firefox'" ]; };
   };
 
   services.guix.enable = true;

@@ -33,8 +33,14 @@ from libqtile.backend.wayland import InputConfig
 import subprocess
 import os
 
-autostart = os.path.expanduser("~/.config/qtile/autostart.sh")
-subprocess.call(["/run/current-system/sw/bin/bash", autostart])
+
+@hook.subscribe.startup_once
+def autostart():
+    autostart_script = "/etc/nixos/dotfiles/qtile/autostart.sh"
+
+    if os.path.exists(autostart_script):
+        subprocess.Popen(["/bin/sh", autostart_script])
+
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -167,8 +173,16 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(border_focus="#ffffff", border_width=2, border_margin=4),
-    layout.Spiral(border_focus="#999999", border_width=2, border_margin=4),
+    layout.MonadTall(
+        border_focus="#ffffff",
+        border_width=2,
+        border_margin=4,
+    ),
+    layout.Spiral(
+        border_focus="#999999",
+        border_width=2,
+        border_margin=4,
+    ),
     layout.Columns(
         border_focus_stack=["#ffffff", "#ffffff"],
         border_width=4,
@@ -243,9 +257,9 @@ mouse = [
 ]
 
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
-follow_mouse_focus = False
-bring_front_click = False
+dgroups_app_rules = []  # :list
+follow_mouse_focus = True
+bring_front_click = True
 floats_kept_above = True
 cursor_warp = True
 floating_layout = layout.Floating(

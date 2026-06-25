@@ -1,3 +1,7 @@
 #!/bin/bash
-# Start Picom once
-picom --config ~/.config/picom/picom.conf &
+
+# Kill any existing instances to avoid background conflicts
+killall picom
+
+# Start cleanly using the NixOS system configuration definitions
+picom -b
