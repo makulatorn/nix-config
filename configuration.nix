@@ -17,6 +17,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # --- CLEANING ---
+  nix.gc.automatic = false;
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 3 --keep-since 3d";
+    };
+  };
+
   # --- NETWORK ---
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -167,6 +178,7 @@
     imagemagick
     fzf
     feh
+    nh
   ];
 
   # --- FONTS ---
@@ -191,10 +203,13 @@
   services.picom = {
     enable = true;
     activeOpacity = 0.95;
-    inactiveOpacity = 0.8;
+    inactiveOpacity = 0.7;
     vSync = true;
     backend = "glx";
-    settings = { opacity-rules = [ "100:class_g = 'Firefox'" ]; };
+    shadow = true;
+    fade = true;
+    fadeDelta = 5;
+    opacityRules = [ "100:class_g = 'firefox' " ];
   };
 
   services.guix.enable = true;
