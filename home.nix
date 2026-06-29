@@ -37,7 +37,6 @@ let
     taplo
     emmet-ls
     clojure-lsp
-    vscode-langservers-extracted
   ];
 
   # --- FORMATTERS/LINTERS ---
@@ -115,6 +114,7 @@ in {
     enable = true;
 
     shellInit = ''
+      set -gx PATH $HOME/.npm/bin $PATH
       set -gx PATH $HOME/.emacs.d/bin $PATH
       set -gx PATH $HOME/.guix-profile/bin $PATH
       set -gx GUIX_LOCPATH $HOME/.guix-profile/lib/locale
