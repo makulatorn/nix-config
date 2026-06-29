@@ -119,7 +119,6 @@ keys = [
     Key([mod], "s", lazy.group.setlayout("spiral"), desc="Spiral"),
     Key([mod], "t", lazy.group.setlayout("treetab"), desc="Treetab"),
     Key([mod], "c", lazy.group.setlayout("columns"), desc="Columns"),
-    Key([mod], "m", lazy.group.setlayout("ratiotile"), desc="RatioTile"),
     Key([mod, "mod1"], "Right", lazy.next_screen(), desc="Move focus to next monitor"),
     Key([mod, "mod1"], "Left", lazy.prev_screen(), desc="Move focus to prev monitor"),
 ]
@@ -193,13 +192,13 @@ layouts = [
         margin=8,
     ),
     # layout.MonadWide(),
-    layout.RatioTile(
-        border_focus="#ffffff",
-        border_width=2,
-        border_margin=2,
-        margin=8,
-        fancy=True,
-    ),
+    # layout.RatioTile(
+    #    border_focus="#ffffff",
+    #    border_width=2,
+    #    border_margin=2,
+    #    margin=8,
+    #    fancy=True,
+    # ),
     # layout.Tile(),
     layout.TreeTab(
         border_focus="#ffffff",
