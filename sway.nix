@@ -29,7 +29,7 @@
         "${mod}+Return" = "exec kitty";
         "${mod}+d" = "exec fuzzel";
         "${mod}+q" = "kill";
-        "${mod}+shift+e" =
+        "${mod}+shift+q" =
           "exec swaynag -t warning -m 'Is there really a difference between exit and entering?' -b 'Yes' 'swaymsg exit'";
 
         # focus — arrows, matching qtile
@@ -68,8 +68,6 @@
         "${mod}+f" = "fullscreen toggle";
         "${mod}+t" = "floating toggle";
         "${mod}+r" = "reload"; # matches qtile's reload_config
-        "${mod}+ctrl+q" =
-          "exec swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit'";
 
         # workspaces 1-9, matching qtile groups
         "${mod}+1" = "workspace 1";
@@ -109,6 +107,11 @@
       blur enable
       corner_radius 6
       shadows enable
+
+      # class            border      bg          text        indicator   child_border
+      client.focused      #ffffff     #ffffff     #000000     #ffffff     #ffffff
+      client.unfocused    #494949     #494949     #ffffff     #494949     #494949
+
       for_window [app_id="firefox"] dim_inactive 0.0
     '';
   };
@@ -164,18 +167,18 @@
 
       window#waybar {
         background: #282828;
-        color: #ebdbb2;
+        color: #ffffff;
       }
 
       #workspaces button {
         padding: 0 8px;
-        color: #ebdbb2;
+        color: #ffffff;
         background: transparent;
       }
 
       #workspaces button.focused {
-        background: #458588;
-        color: #282828;
+        background: #494949;
+        color: #ffffff;
       }
 
       #pulseaudio,
