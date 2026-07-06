@@ -82,6 +82,8 @@ let
   ];
 
 in {
+  imports = [ ./sway.nix ];
+
   home.file = {
     ".config/qtile/config.py" = {
       source = ./dotfiles/qtile/config.py;
@@ -211,5 +213,6 @@ in {
       pass
       aspell
       aspellDicts.en
+      fuzzel
     ] ++ languages ++ lspServers ++ lintFormat ++ devTools;
 }

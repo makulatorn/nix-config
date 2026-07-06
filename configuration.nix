@@ -4,6 +4,7 @@
   # --- SESSION PATH ---
   environment.sessionVariables = {
     PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH";
+    WLR_DRM_DEVICES = "/dev/dri/card1";
   };
 
   # --- IMPORTS ---
@@ -56,6 +57,13 @@
     xkb.variant =
       "altgr-intl,,colemak_dh"; # third variant = colemak_dh on us base
   };
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    package = pkgs.swayfx;
+  };
+
   console = { useXkbConfig = true; };
 
   services.displayManager.sddm = {
@@ -92,7 +100,8 @@
   users.users.trasha = {
     isNormalUser = true;
     description = "trasha";
-    extraGroups = [ "networkmanager" "wheel" "storage" "docker" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "storage" "docker" "video" "input" ];
   };
 
   environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
@@ -173,6 +182,8 @@
 
     # TOOLS
     arandr
+    wlr-randr
+    wdisplays
     reaper
     displaylink
     imagemagick

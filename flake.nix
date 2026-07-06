@@ -3,16 +3,19 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
+          stylix.nixosModules.stylix
           ./configuration.nix
           # This tells nixpkgs to allow unfree for the whole system
           { nixpkgs.config.allowUnfree = true; }
@@ -24,6 +27,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.trasha =
               import ./home.nix; # Don't pass {inherit pkgs;} here
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };
