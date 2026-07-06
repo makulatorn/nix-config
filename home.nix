@@ -126,7 +126,7 @@ in {
 
     functions = {
       fish_greeting = ''
-        random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3" "You're doing such a good job baby~"
+        random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3" "You're doing such a good job baby~" "What do now?" "This jacket is awesome! And it’s tighter than dick skin!" "That woman is unspeakably crass." "Another ear splitting hit from The Jester" "Today is a day in your life <3"
       '';
     };
 
@@ -214,5 +214,6 @@ in {
       aspell
       aspellDicts.en
       fuzzel
+      autotiling
     ] ++ languages ++ lspServers ++ lintFormat ++ devTools;
 }

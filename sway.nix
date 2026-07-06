@@ -14,7 +14,7 @@
       terminal = "kitty";
       menu = "fuzzel";
       bars = [ ];
-      startup = [{ command = "waybar"; }];
+      startup = [ { command = "waybar"; } { command = "autotiling"; } ];
 
       input = {
         "type:keyboard" = {
@@ -121,12 +121,11 @@
     settings.mainBar = {
       layer = "top";
       position = "top";
-      height = 32;
+      height = 16;
       spacing = 8;
       modules-left = [ "sway/workspaces" ];
       modules-center = [ "sway/window" ];
-      modules-right =
-        [ "sway/language" "pulseaudio" "network" "battery" "clock" ];
+      modules-right = [ "sway/language" "pulseaudio" "battery" "clock" ];
 
       "sway/language" = {
         format = "{short}";
@@ -188,8 +187,17 @@
         padding: 0 10px;
       }
 
+      #pulseaudio {
+        color: plum;
+      }
+
+      #battery {
+        color: aquamarine;
+      }
+
       #clock {
         font-weight: bold;
+        color: white;
       }
     '';
   };
