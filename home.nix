@@ -56,6 +56,7 @@
       docker = "sudo docker";
       dgitconf = "git config --global --add safe.directory /app";
       dkill = "sudo docker rm --force";
+      dmurder = "docker stop $(docker ps -a -q)";
       doomconf = "cd /home/trasha/.config/doom";
       doomfresh =
         "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
