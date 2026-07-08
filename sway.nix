@@ -37,7 +37,6 @@
         "${mod}+Right" = "focus right";
         "${mod}+Down" = "focus down";
         "${mod}+Up" = "focus up";
-        "${mod}+space" = "focus next"; # qtile's layout.next()
 
         # move windows — shift+arrows
         "${mod}+shift+Left" = "move left";
@@ -50,16 +49,6 @@
         "${mod}+ctrl+Right" = "resize grow width 30px";
         "${mod}+ctrl+Down" = "resize grow height 30px";
         "${mod}+ctrl+Up" = "resize shrink height 30px";
-
-        # also keep hjkl as an alt binding since you had it before
-        "${mod}+h" = "focus left";
-        "${mod}+j" = "focus down";
-        "${mod}+k" = "focus up";
-        "${mod}+l" = "focus right";
-        "${mod}+shift+h" = "move left";
-        "${mod}+shift+j" = "move down";
-        "${mod}+shift+k" = "move up";
-        "${mod}+shift+l" = "move right";
 
         "${mod}+shift+Return" =
           "layout toggle split"; # matches qtile's toggle_split
@@ -170,7 +159,6 @@
       }
 
       #workspaces button {
-        padding: 0 8px;
         color: #ffffff;
         background: transparent;
       }
