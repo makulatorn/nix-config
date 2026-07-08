@@ -1,88 +1,7 @@
 { config, pkgs, ... }:
-let
-  # --- LANG RUNTIME/MANAGERS ---
-  languages = with pkgs; [
-    python3
-    python3Packages.pip
-    conda
-    pyenv
-    pipenv
-    poetry
-    nodejs
-    typescript
-    rustc
-    cargo
-    ghc
-    cabal-install
-    clojure
-    babashka
-    leiningen
-    sbcl
-    jq
-    pandoc
-    tidy-viewer
-  ];
 
-  # --- LSP ---
-  lspServers = with pkgs; [
-    basedpyright
-    ruff
-    bash-language-server
-    typescript-language-server
-    haskell-language-server
-    yaml-language-server
-    nixd
-    rust-analyzer
-    marksman
-    taplo
-    emmet-ls
-    clojure-lsp
-  ];
-
-  # --- FORMATTERS/LINTERS ---
-  lintFormat = with pkgs; [
-    python3Packages.mypy
-    python3Packages.pytest
-    prettierd
-    shellcheck
-    shfmt
-    dockfmt
-    ktlint
-    nixfmt-classic
-    stylelint
-    cljfmt
-  ];
-
-  # --- BUILD TOOLS ---
-  devTools = with pkgs; [
-    pay-respects
-    nix-search
-    gnumake
-    pkg-config
-    autoconf
-    automake
-    libtool
-    ninja
-    gcc
-    cmake
-    fd
-    ripgrep
-    tmux
-    git
-    ghc
-    haskellPackages.hoogle
-    python3Packages.django
-    python3Packages.requests
-    python3Packages.httpx
-    python3Packages.uvicorn
-    python3Packages.weasyprint
-    python3Packages.python-magic
-    javaPackages.compiler.openjdk25
-    pre-commit
-  ];
-
-in {
-  imports = [ ./sway.nix ];
+{
+  imports = [ ./sway.nix ./dev-packages.nix ];
 
   home.file = {
     ".config/qtile/config.py" = {
@@ -192,28 +111,27 @@ in {
     };
   };
 
-  home.packages = with pkgs;
-    [
-      mixxx
-      grim
-      flameshot
-      navi
-      yazi
-      emacs30
-      kitty
-      gimp
-      libreoffice
-      puredata
-      helvum
-      milkytracker
-      wordnet
-      reaper
-      gnupg
-      pinentry-curses
-      pass
-      aspell
-      aspellDicts.en
-      fuzzel
-      autotiling
-    ] ++ languages ++ lspServers ++ lintFormat ++ devTools;
+  home.packages = with pkgs; [
+    mixxx
+    grim
+    flameshot
+    navi
+    yazi
+    emacs30
+    kitty
+    gimp
+    libreoffice
+    puredata
+    helvum
+    milkytracker
+    wordnet
+    reaper
+    gnupg
+    pinentry-curses
+    pass
+    aspell
+    aspellDicts.en
+    fuzzel
+    autotiling
+  ];
 }
