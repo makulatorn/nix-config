@@ -165,6 +165,7 @@
     transmission_4-gtk
     vlc
     sqlite
+    qlcplus
 
     # DEV
     podman-compose

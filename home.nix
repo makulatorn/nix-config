@@ -118,6 +118,7 @@
     flameshot
     navi
     yazi
+    superfile
     emacs30
     kitty
     gimp
