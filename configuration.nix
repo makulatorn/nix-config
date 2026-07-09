@@ -101,7 +101,7 @@
     isNormalUser = true;
     description = "trasha";
     extraGroups =
-      [ "networkmanager" "wheel" "storage" "docker" "video" "input" ];
+      [ "networkmanager" "wheel" "storage" "docker" "video" "input" "dialout" ];
   };
 
   environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
@@ -225,4 +225,10 @@
   };
 
   services.guix.enable = true;
+
+  services.udev.extraRules = ''
+    # Enttec Open DMX USB - detach ftdi_sio so QLC+ can access it directly via libusb
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ENV{DEVTYPE}=="usb_interface", RUN+="${pkgs.bash}/bin/sh -c 'echo -n %k > /sys/bus/usb/drivers/ftdi_sio/unbind'"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666", GROUP="dialout"
+  '';
 }
