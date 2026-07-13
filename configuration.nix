@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # --- SESSION PATH ---
@@ -11,8 +16,14 @@
   imports = [ ./hardware-configuration.nix ];
 
   # --- NIX SETTINGS ---
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = [ "root" "trasha" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  nix.settings.trusted-users = [
+    "root"
+    "trasha"
+  ];
 
   # --- BOOTLOADER ---
   boot.loader.systemd-boot.enable = true;
@@ -54,8 +65,7 @@
     enable = true;
     xkb.layout = "us,dk,us";
     xkb.options = "ctrl:swapcaps";
-    xkb.variant =
-      "altgr-intl,,colemak_dh"; # third variant = colemak_dh on us base
+    xkb.variant = "altgr-intl,,colemak_dh"; # third variant = colemak_dh on us base
   };
 
   programs.sway = {
@@ -64,7 +74,9 @@
     package = pkgs.swayfx;
   };
 
-  console = { useXkbConfig = true; };
+  console = {
+    useXkbConfig = true;
+  };
 
   services.displayManager.sddm = {
     enable = true;
@@ -72,13 +84,25 @@
   };
 
   services.xserver.windowManager.qtile.enable = true;
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+  services.xserver.videoDrivers = [
+    "displaylink"
+    "modesetting"
+  ];
   boot = {
-    initrd.availableKernelModules = [ "rtsx_pci_sdmmc" "rtsx_pci" ];
+    initrd.availableKernelModules = [
+      "rtsx_pci_sdmmc"
+      "rtsx_pci"
+    ];
 
-    kernelModules = [ "rtsx_pci_sdmmc" "evdi" ];
+    kernelModules = [
+      "rtsx_pci_sdmmc"
+      "evdi"
+    ];
 
-    kernelParams = [ "pcie_aspm=off" "rtsx_pci.aspm_enabled=0" ];
+    kernelParams = [
+      "pcie_aspm=off"
+      "rtsx_pci.aspm_enabled=0"
+    ];
   };
 
   # --- PRINT/SOUND ---
@@ -100,11 +124,20 @@
   users.users.trasha = {
     isNormalUser = true;
     description = "trasha";
-    extraGroups =
-      [ "networkmanager" "wheel" "storage" "docker" "video" "input" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "storage"
+      "docker"
+      "video"
+      "input"
+      "dialout"
+    ];
   };
 
-  environment.variables = { QT_STYLE_OVERRIDE = "adwaita-dark"; };
+  environment.variables = {
+    QT_STYLE_OVERRIDE = "adwaita-dark";
+  };
 
   services.udisks2.enable = true;
   services.gvfs.enable = true;
@@ -113,6 +146,28 @@
   # --- PROGRAMS ---
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+  ];
+
+  # All of this is to make sure all the libraries needed for GEM
+  # to work in pure data on Nixos are in the correct path
+  # alongside pipewire.jack which also uses enviroment.variables
+  environment.variables.LD_LIBRARY_PATH = lib.mkForce (
+    lib.makeLibraryPath (
+      with pkgs;
+      [
+        pipewire.jack
+        stdenv.cc.cc.lib
+        fribidi
+        ftgl
+        libglvnd
+        libGLU
+        glfw
+      ]
+    )
+  );
+
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
@@ -121,7 +176,9 @@
   virtualisation.docker = {
     enable = true;
     package = pkgs.docker_29;
-    rootless = { enable = false; };
+    rootless = {
+      enable = false;
+    };
   };
 
   virtualisation.podman = {
@@ -129,7 +186,9 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  programs.steam = { enable = true; };
+  programs.steam = {
+    enable = true;
+  };
 
   programs.gamemode.enable = true;
 
@@ -150,9 +209,9 @@
     pay-respects
     pavucontrol
     networkmanagerapplet
-    xfce.thunar
-    xfce.xfce4-power-manager
-    xfce.xfce4-notifyd
+    pkgs.thunar
+    pkgs.xfce4-power-manager
+    pkgs.xfce4-notifyd
     ripgrep
     xclip
     unzip
@@ -196,7 +255,10 @@
   # --- FONTS ---
   fonts = {
     fontconfig.enable = true;
-    packages = with pkgs; [ nerd-fonts.fira-code nerd-fonts.symbols-only ];
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+      nerd-fonts.symbols-only
+    ];
   };
 
   # --- OpenSSH ---
@@ -206,7 +268,10 @@
   services.openssh.ports = [ 2222 ];
 
   # --- FIREWALL ---
-  networking.firewall.allowedTCPPorts = [ 8080 1521 ];
+  networking.firewall.allowedTCPPorts = [
+    8080
+    1521
+  ];
   networking.firewall.trustedInterfaces = [ "podman0" ];
   # --- STATE VERSION ---
   system.stateVersion = "25.11";

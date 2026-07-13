@@ -1,7 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [ ./sway.nix ./dev-packages.nix ];
+  imports = [
+    ./sway.nix
+    ./dev-packages.nix
+  ];
 
   home.file = {
     ".config/qtile/config.py" = {
@@ -20,14 +28,9 @@
     };
   };
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
-
-  home.sessionVariables = {
-    DOOMDIR = "${config.home.homeDirectory}/.config/doom";
-    DOOMLOCALDIR = "${config.home.homeDirectory}/.emacs.d/.local";
-  };
 
   programs.zsh.enable = true;
 
@@ -58,13 +61,10 @@
       dkill = "sudo docker rm --force";
       dmurder = "docker stop $(docker ps -a -q)";
       doomconf = "cd /home/trasha/.config/doom";
-      doomfresh =
-        "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
+      doomfresh = "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
       doomurder = "pkill -9 emacs && doom sync";
-      easypodup =
-        "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
-      easypodown =
-        "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
+      easypodup = "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
+      easypodown = "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
     };
   };
 
@@ -87,7 +87,13 @@
     };
   };
 
-  programs.neovim = { enable = true; };
+  programs.neovim = {
+    enable = true;
+  };
+
+  programs.emacs = {
+    enable = true;
+  };
 
   programs.vscode = {
     enable = true;
@@ -119,12 +125,11 @@
     navi
     yazi
     superfile
-    emacs30
     kitty
     gimp
     libreoffice
     puredata
-    helvum
+    crosspipe
     milkytracker
     wordnet
     reaper
@@ -133,7 +138,7 @@
     pass
     aspell
     aspellDicts.en
-    fuzzel
     autotiling
+    wev
   ];
 }

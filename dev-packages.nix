@@ -45,7 +45,7 @@
     shfmt
     dockfmt
     ktlint
-    nixfmt-classic
+    nixfmt
     stylelint
     cljfmt
 
