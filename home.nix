@@ -75,6 +75,11 @@
         name = "sasha";
         email = "sasha.friis@icloud.com";
       };
+
+      "url \"git@gitlab.com:trasha/\"" = {
+        pushInsteadOf = "git@github.com:makulatorn/";
+      };
+
       alias = {
         lgg = "log --oneline --graph";
         lga = "log --all";
