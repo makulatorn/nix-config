@@ -145,5 +145,6 @@
     aspellDicts.en
     autotiling
     wev
+    glab
   ];
 }
