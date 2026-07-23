@@ -33,71 +33,71 @@
         let
           mod = "Mod4";
         in
-          {
-            "${mod}+Return" = "exec kitty";
-            "${mod}+d" = "exec fuzzel";
-            "${mod}+q" = "kill";
-            "${mod}+shift+q" =
-              "exec swaynag -t warning -m 'Is there really a difference between exit and entering?' -b 'Yes' 'swaymsg exit'";
+        {
+          "${mod}+Return" = "exec kitty";
+          "${mod}+d" = "exec fuzzel";
+          "${mod}+q" = "kill";
+          "${mod}+shift+q" =
+            "exec swaynag -t warning -m 'Is there really a difference between exit and entering?' -b 'Yes' 'swaymsg exit'";
 
-            # focus — arrows, matching qtile
-            "${mod}+Left" = "focus left";
-            "${mod}+Right" = "focus right";
-            "${mod}+Down" = "focus down";
-            "${mod}+Up" = "focus up";
+          # focus — arrows, matching qtile
+          "${mod}+Left" = "focus left";
+          "${mod}+Right" = "focus right";
+          "${mod}+Down" = "focus down";
+          "${mod}+Up" = "focus up";
 
-            # move windows — shift+arrows
-            "${mod}+shift+Left" = "move left";
-            "${mod}+shift+Right" = "move right";
-            "${mod}+shift+Down" = "move down";
-            "${mod}+shift+Up" = "move up";
+          # move windows — shift+arrows
+          "${mod}+shift+Left" = "move left";
+          "${mod}+shift+Right" = "move right";
+          "${mod}+shift+Down" = "move down";
+          "${mod}+shift+Up" = "move up";
 
-            # resize — ctrl+arrows, matching qtile's grow_*
-            "${mod}+ctrl+Left" = "resize shrink width 30px";
-            "${mod}+ctrl+Right" = "resize grow width 30px";
-            "${mod}+ctrl+Down" = "resize grow height 30px";
-            "${mod}+ctrl+Up" = "resize shrink height 30px";
+          # resize — ctrl+arrows, matching qtile's grow_*
+          "${mod}+ctrl+Left" = "resize shrink width 30px";
+          "${mod}+ctrl+Right" = "resize grow width 30px";
+          "${mod}+ctrl+Down" = "resize grow height 30px";
+          "${mod}+ctrl+Up" = "resize shrink height 30px";
 
-            "${mod}+shift+Return" = "layout toggle split"; # matches qtile's toggle_split
-            "${mod}+Tab" = "layout toggle all"; # cycle layouts, like qtile's next_layout
-            "${mod}+f" = "fullscreen toggle";
-            "${mod}+t" = "floating toggle";
-            "${mod}+r" = "reload"; # matches qtile's reload_config
+          "${mod}+shift+Return" = "layout toggle split"; # matches qtile's toggle_split
+          "${mod}+Tab" = "layout toggle all"; # cycle layouts, like qtile's next_layout
+          "${mod}+f" = "fullscreen toggle";
+          "${mod}+t" = "floating toggle";
+          "${mod}+r" = "reload"; # matches qtile's reload_config
 
-            # workspaces 1-9, matching qtile groups
-            "${mod}+1" = "workspace 1";
-            "${mod}+2" = "workspace 2";
-            "${mod}+3" = "workspace 3";
-            "${mod}+4" = "workspace 4";
-            "${mod}+5" = "workspace 5";
-            "${mod}+6" = "workspace 6";
-            "${mod}+7" = "workspace 7";
-            "${mod}+8" = "workspace 8";
-            "${mod}+9" = "workspace 9";
-            "${mod}+shift+1" = "move container to workspace 1";
-            "${mod}+shift+2" = "move container to workspace 2";
-            "${mod}+shift+3" = "move container to workspace 3";
-            "${mod}+shift+4" = "move container to workspace 4";
-            "${mod}+shift+5" = "move container to workspace 5";
-            "${mod}+shift+6" = "move container to workspace 6";
-            "${mod}+shift+7" = "move container to workspace 7";
-            "${mod}+shift+8" = "move container to workspace 8";
-            "${mod}+shift+9" = "move container to workspace 9";
+          # workspaces 1-9, matching qtile groups
+          "${mod}+1" = "workspace 1";
+          "${mod}+2" = "workspace 2";
+          "${mod}+3" = "workspace 3";
+          "${mod}+4" = "workspace 4";
+          "${mod}+5" = "workspace 5";
+          "${mod}+6" = "workspace 6";
+          "${mod}+7" = "workspace 7";
+          "${mod}+8" = "workspace 8";
+          "${mod}+9" = "workspace 9";
+          "${mod}+shift+1" = "move container to workspace 1";
+          "${mod}+shift+2" = "move container to workspace 2";
+          "${mod}+shift+3" = "move container to workspace 3";
+          "${mod}+shift+4" = "move container to workspace 4";
+          "${mod}+shift+5" = "move container to workspace 5";
+          "${mod}+shift+6" = "move container to workspace 6";
+          "${mod}+shift+7" = "move container to workspace 7";
+          "${mod}+shift+8" = "move container to workspace 8";
+          "${mod}+shift+9" = "move container to workspace 9";
 
-            # multi-monitor — matches qtile's next_screen/prev_screen
-            "${mod}+mod1+Right" = "focus output right";
-            "${mod}+mod1+Left" = "focus output left";
+          # multi-monitor — matches qtile's next_screen/prev_screen
+          "${mod}+mod1+Right" = "focus output right";
+          "${mod}+mod1+Left" = "focus output left";
 
-            # keyboard layout cycling — matches your qtile KeyboardLayout widget
-            "${mod}+shift+tab" = "input type:keyboard xkb_switch_layout next";
+          # keyboard layout cycling — matches your qtile KeyboardLayout widget
+          "${mod}+shift+tab" = "input type:keyboard xkb_switch_layout next";
 
-            # Media keys
-            "--locked XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
-            "--locked XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-            "--locked XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-            "--locked XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
-            "--locked XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-          };
+          # Media keys
+          "--locked XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
+          "--locked XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+          "--locked XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "--locked XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+          "--locked XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        };
     };
     extraConfig = ''
       output * bg #282828 solid_color
@@ -107,7 +107,6 @@
 
       default_dim_inactive 0.3
       blur enable
-      corner_radius 6
       shadows enable
 
       # class            border      bg          text        indicator   child_border
@@ -234,10 +233,6 @@
         selection = "494949ff";
         selection-text = "ffffffff";
         border = "ffffffff";
-      };
-      border = {
-        width = 2;
-        radius = 6;
       };
     };
   };

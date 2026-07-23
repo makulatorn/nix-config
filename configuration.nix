@@ -218,7 +218,6 @@
     transmission_4-gtk
     vlc
     sqlite
-    qlcplus
     cataclysm-dda
 
     # DEV
