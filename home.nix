@@ -57,7 +57,7 @@
       nixupdate = "sudo nix flake update";
       suicide = "sudo shutdown now";
       docker = "sudo docker";
-      dgitconf = "git config --global --add safe.directory /app";
+      dgitconf = "docker exec -u 0 easyrf git config --global --add safe.directory /app";
       precom = "docker exec -u 0 -it easyrf pre-commit run";
       dkill = "sudo docker rm --force";
       dmurder = "docker stop $(docker ps -a -q)";
