@@ -58,6 +58,7 @@
       suicide = "sudo shutdown now";
       docker = "sudo docker";
       dgitconf = "git config --global --add safe.directory /app";
+      precom = "docker exec -u 0 -it easyrf pre-commit run";
       dkill = "sudo docker rm --force";
       dmurder = "docker stop $(docker ps -a -q)";
       doomconf = "cd /home/trasha/.config/doom";
