@@ -93,17 +93,8 @@
     };
   };
 
-  programs.neovim = {
-    enable = true;
-  };
-
   programs.emacs = {
     enable = true;
-  };
-
-  programs.vscode = {
-    enable = true;
-    profiles.default = { };
   };
 
   programs.direnv = {
