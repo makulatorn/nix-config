@@ -262,7 +262,7 @@
     settings = {
       color = "282828";
       font-size = 24;
-      indicator-idle-visible = false;
+      indicator-idle-visible = true;
       show-failed-attempts = true;
     };
   };
