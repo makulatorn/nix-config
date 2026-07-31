@@ -120,7 +120,6 @@
     grim
     flameshot
     navi
-    yazi
     superfile
     kitty
     gimp
