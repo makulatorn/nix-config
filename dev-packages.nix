@@ -48,6 +48,7 @@
     nixfmt
     stylelint
     cljfmt
+    libxml2
 
     # --- BUILD TOOLS ---
     pay-respects
@@ -73,5 +74,6 @@
     python3Packages.python-magic
     javaPackages.compiler.openjdk25
     pre-commit
+    python3Packages.pytest
   ];
 }
