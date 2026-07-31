@@ -236,4 +236,34 @@
       };
     };
   };
+
+  services.swayidle = {
+    enable = true;
+    systemdTargets = [ "sway-session.target" ];
+    timeouts = [
+      {
+        timeout = 300;
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        timeout = 600;
+        command = "swaymsg 'output * dpms off'";
+        resumeCommand = "swaymsg 'output * dpms on'";
+      }
+    ];
+    events = {
+      before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
+      lock = "${pkgs.swaylock}/bin/swaylock -f";
+    };
+  };
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "282828";
+      font-size = 24;
+      indicator-idle-visible = false;
+      show-failed-attempts = true;
+    };
+  };
 }
