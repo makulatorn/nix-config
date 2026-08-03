@@ -40,31 +40,31 @@
           "${mod}+shift+q" =
             "exec swaynag -t warning -m 'Is there really a difference between exit and entering?' -b 'Yes' 'swaymsg exit'";
 
-          # focus — arrows, matching qtile
+          # focus
           "${mod}+Left" = "focus left";
           "${mod}+Right" = "focus right";
           "${mod}+Down" = "focus down";
           "${mod}+Up" = "focus up";
 
-          # move windows — shift+arrows
+          # move windows
           "${mod}+shift+Left" = "move left";
           "${mod}+shift+Right" = "move right";
           "${mod}+shift+Down" = "move down";
           "${mod}+shift+Up" = "move up";
 
-          # resize — ctrl+arrows, matching qtile's grow_*
+          # resize
           "${mod}+ctrl+Left" = "resize shrink width 30px";
           "${mod}+ctrl+Right" = "resize grow width 30px";
           "${mod}+ctrl+Down" = "resize grow height 30px";
           "${mod}+ctrl+Up" = "resize shrink height 30px";
 
-          "${mod}+shift+Return" = "layout toggle split"; # matches qtile's toggle_split
-          "${mod}+Tab" = "layout toggle all"; # cycle layouts, like qtile's next_layout
+          "${mod}+shift+Return" = "layout toggle split";
+          "${mod}+Tab" = "layout toggle all";
           "${mod}+f" = "fullscreen toggle";
           "${mod}+t" = "floating toggle";
-          "${mod}+r" = "reload"; # matches qtile's reload_config
+          "${mod}+r" = "reload";
 
-          # workspaces 1-9, matching qtile groups
+          # workspaces 1-9
           "${mod}+1" = "workspace 1";
           "${mod}+2" = "workspace 2";
           "${mod}+3" = "workspace 3";
@@ -84,12 +84,15 @@
           "${mod}+shift+8" = "move container to workspace 8";
           "${mod}+shift+9" = "move container to workspace 9";
 
-          # multi-monitor — matches qtile's next_screen/prev_screen
+          # multi-monitor
           "${mod}+mod1+Right" = "focus output right";
           "${mod}+mod1+Left" = "focus output left";
 
-          # keyboard layout cycling — matches your qtile KeyboardLayout widget
+          # keyboard layout
           "${mod}+shift+tab" = "input type:keyboard xkb_switch_layout next";
+
+          # Logout
+          "${mod}+shift+x" = "exec loginctl lock-session";
 
           # Media keys
           "--locked XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
@@ -243,11 +246,11 @@
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "${pkgs.playerctl}/bin/playerctl status 2>/dev/null | grep -q Playing || ${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         timeout = 600;
-        command = "swaymsg 'output * dpms off'";
+        command = "${pkgs.playerctl}/bin/playerctl status 2>/dev/null | grep -q Playing || swaymsg 'output * dpms off'";
         resumeCommand = "swaymsg 'output * dpms on'";
       }
     ];

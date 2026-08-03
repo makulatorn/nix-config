@@ -137,5 +137,6 @@
     autotiling
     wev
     glab
+    playerctl
   ];
 }
