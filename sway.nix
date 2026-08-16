@@ -245,11 +245,11 @@
     systemdTargets = [ "sway-session.target" ];
     timeouts = [
       {
-        timeout = 300;
+        timeout = 2000;
         command = "${pkgs.playerctl}/bin/playerctl status 2>/dev/null | grep -q Playing || ${pkgs.swaylock}/bin/swaylock -f";
       }
       {
-        timeout = 600;
+        timeout = 2000;
         command = "${pkgs.playerctl}/bin/playerctl status 2>/dev/null | grep -q Playing || swaymsg 'output * dpms off'";
         resumeCommand = "swaymsg 'output * dpms on'";
       }

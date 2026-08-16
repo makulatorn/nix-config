@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+  pkgs ? import <nixpkgs> { },
   lib,
   ...
 }:
@@ -95,6 +95,13 @@
 
   programs.emacs = {
     enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [
+      epkgs.nix-mode
+      epkgs.nixfmt
+      epkgs.treesit-grammars.with-all-grammars
+      epkgs.tree-sitter-langs
+    ];
   };
 
   programs.direnv = {
