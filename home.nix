@@ -145,5 +145,7 @@
     wev
     glab
     playerctl
+    emacsPackages.tree-sitter-langs
+    emacsPackages.treesit-grammars.with-all-grammars
   ];
 }
