@@ -12,15 +12,6 @@
   ];
 
   home.file = {
-    ".config/qtile/config.py" = {
-      source = ./dotfiles/qtile/config.py;
-      force = true;
-    };
-    ".config/qtile/autostart.sh" = {
-      source = ./dotfiles/qtile/autostart.sh;
-      force = true;
-    };
-
     ".config/kitty" = {
       source = ./dotfiles/kitty;
       recursive = true;
@@ -95,13 +86,18 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-pgtk;
+    package = pkgs.emacs-git-pgtk;
     extraPackages = epkgs: [
       epkgs.nix-mode
       epkgs.nixfmt
       epkgs.treesit-grammars.with-all-grammars
       epkgs.tree-sitter-langs
     ];
+  };
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs-git-pgtk;
   };
 
   programs.direnv = {
@@ -147,5 +143,6 @@
     playerctl
     emacsPackages.tree-sitter-langs
     emacsPackages.treesit-grammars.with-all-grammars
+    yazi
   ];
 }

@@ -83,7 +83,6 @@
     wayland.enable = false;
   };
 
-  services.xserver.windowManager.qtile.enable = true;
   services.xserver.videoDrivers = [
     "displaylink"
     "modesetting"
