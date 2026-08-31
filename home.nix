@@ -23,6 +23,10 @@
 
   home.sessionPath = [ "$HOME/.npm-global/bin" ];
 
+  home.sessionVariables = {
+    XDG_DATA_DIRS = "$HOME/.local/share:$XDG_DATA_DIRS";
+  };
+
   programs.zsh.enable = true;
 
   programs.fish = {
@@ -41,6 +45,19 @@
       fish_greeting = ''
         random choice "Make mommy proud~" "Mommy missed you~" "Mommys little pet is back~ <3" "You're doing such a good job baby~" "What do now?" "This jacket is awesome! And it’s tighter than dick skin!" "That woman is unspeakably crass." "Another ear splitting hit from The Jester" "Today is a day in your life <3"
       '';
+      doomfresh = ''
+        systemctl --user stop emacs
+        rm -rf ~/.emacs.d/.local
+        doom sync
+        sleep 1
+        systemctl --user start emacs
+      '';
+      doomurder = ''
+        doom sync
+        sleep 1
+        systemctl --user restart emacs
+        systemctl --user status emacs
+      '';
     };
 
     shellAliases = {
@@ -53,8 +70,6 @@
       dkill = "sudo docker rm --force";
       dmurder = "docker stop $(docker ps -a -q)";
       doomconf = "cd /home/trasha/.config/doom";
-      doomfresh = "pkill -9 emacs; rm -rf ~/.emacs.d/.local; ~/.emacs.d/bin/doom sync";
-      doomurder = "pkill -9 emacs && doom sync";
       easypodup = "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
       easypodown = "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
     };
