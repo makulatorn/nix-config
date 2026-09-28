@@ -109,8 +109,8 @@
       gaps outer 2
 
       default_dim_inactive 0.3
-      blur enable
-      shadows enable
+      blur disable
+      shadows disable
 
       # class            border      bg          text        indicator   child_border
       client.focused      #ffffff     #ffffff     #000000     #ffffff     #ffffff

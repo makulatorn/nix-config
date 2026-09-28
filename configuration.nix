@@ -84,7 +84,6 @@
   };
 
   services.xserver.videoDrivers = [
-    "displaylink"
     "modesetting"
   ];
   boot = {
@@ -237,7 +236,6 @@
     wlr-randr
     wdisplays
     reaper
-    displaylink
     imagemagick
     fzf
     feh

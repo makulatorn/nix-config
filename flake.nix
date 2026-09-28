@@ -5,8 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -14,7 +12,6 @@
       self,
       nixpkgs,
       home-manager,
-      emacs-overlay,
       ...
     }:
     let
@@ -28,7 +25,6 @@
           # This tells nixpkgs to allow unfree for the whole system
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [ emacs-overlay.overlays.default ];
           }
 
           home-manager.nixosModules.home-manager

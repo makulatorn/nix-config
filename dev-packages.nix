@@ -75,5 +75,6 @@
     javaPackages.compiler.openjdk25
     pre-commit
     python3Packages.pytest
+    python3Packages.psycopg2-binary
   ];
 }
