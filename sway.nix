@@ -120,126 +120,6 @@
     '';
   };
 
-  programs.waybar = {
-    enable = true;
-    settings.mainBar = {
-      layer = "top";
-      position = "top";
-      height = 16;
-      spacing = 8;
-      modules-left = [ "sway/workspaces" ];
-      modules-center = [ "sway/window" ];
-      modules-right = [
-        "sway/language"
-        "pulseaudio"
-        "battery"
-        "clock"
-      ];
-
-      "sway/language" = {
-        format = "{short}";
-        tooltip = false;
-      };
-
-      "sway/workspaces" = {
-        format = "{icon} {name}";
-        format-icons = {
-          default = "";
-        };
-      };
-
-      pulseaudio = {
-        format = "  {volume}%";
-        format-muted = "  muted";
-        on-click = "pavucontrol";
-      };
-
-      network = {
-        format-wifi = "  {essid} ({signalStrength}%)";
-        format-ethernet = "  {ifname}";
-        format-disconnected = "⚠ disconnected";
-      };
-
-      battery = {
-        format = "{icon}  {capacity}%";
-        format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
-        ];
-      };
-
-      clock = {
-        format = "  {:%H:%M   %a %d %b}";
-      };
-    };
-
-    style = ''
-      * {
-        font-family: "FiraCode Nerd Font", monospace;
-        font-size: 13px;
-        min-height: 0;
-      }
-
-      window#waybar {
-        background: #282828;
-        color: #ffffff;
-      }
-
-      #workspaces button {
-        color: #ffffff;
-        background: transparent;
-      }
-
-      #workspaces button.focused {
-        background: #494949;
-        color: #ffffff;
-      }
-
-      #pulseaudio,
-      #network,
-      #battery,
-      #clock {
-        padding: 0 10px;
-      }
-
-      #pulseaudio {
-        color: plum;
-      }
-
-      #battery {
-        color: aquamarine;
-      }
-
-      #clock {
-        font-weight: bold;
-        color: white;
-      }
-    '';
-  };
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "FiraCode Nerd Font:size=12";
-        terminal = "kitty";
-        layer = "overlay";
-        width = 40;
-        lines = 10;
-      };
-      colors = {
-        background = "282828f2";
-        text = "ffffffff";
-        match = "d3869bff";
-        selection = "494949ff";
-        selection-text = "ffffffff";
-        border = "ffffffff";
-      };
-    };
-  };
-
   services.swayidle = {
     enable = true;
     systemdTargets = [ "sway-session.target" ];
@@ -260,13 +140,136 @@
     };
   };
 
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "282828";
-      font-size = 24;
-      indicator-idle-visible = true;
-      show-failed-attempts = true;
+  programs = {
+    waybar = {
+      enable = true;
+      settings.mainBar = {
+        layer = "top";
+        position = "top";
+        height = 16;
+        spacing = 8;
+        modules-left = [ "sway/workspaces" ];
+        modules-center = [ "sway/window" ];
+        modules-right = [
+          "sway/language"
+          "pulseaudio"
+          "battery"
+          "clock"
+        ];
+
+        "sway/language" = {
+          format = "{short}";
+          tooltip = false;
+        };
+
+        "sway/workspaces" = {
+          format = "{icon} {name}";
+          format-icons = {
+            default = "";
+          };
+        };
+
+        pulseaudio = {
+          format = "  {volume}%";
+          format-muted = "  muted";
+          on-click = "pavucontrol";
+        };
+
+        network = {
+          format-wifi = "  {essid} ({signalStrength}%)";
+          format-ethernet = "  {ifname}";
+          format-disconnected = "⚠ disconnected";
+        };
+
+        battery = {
+          format = "{icon}  {capacity}%";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+        };
+
+        clock = {
+          format = "  {:%H:%M   %a %d %b}";
+        };
+      };
+
+      style = ''
+        * {
+          font-family: "FiraCode Nerd Font", monospace;
+          font-size: 13px;
+          min-height: 0;
+        }
+
+        window#waybar {
+          background: #282828;
+          color: #ffffff;
+        }
+
+        #workspaces button {
+          color: #ffffff;
+          background: transparent;
+        }
+
+        #workspaces button.focused {
+          background: #494949;
+          color: #ffffff;
+        }
+
+        #pulseaudio,
+        #network,
+        #battery,
+        #clock {
+          padding: 0 10px;
+        }
+
+        #pulseaudio {
+          color: plum;
+        }
+
+        #battery {
+          color: aquamarine;
+        }
+
+        #clock {
+          font-weight: bold;
+          color: white;
+        }
+      '';
+    };
+
+    fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          font = "FiraCode Nerd Font:size=12";
+          terminal = "kitty";
+          layer = "overlay";
+          width = 40;
+          lines = 10;
+        };
+        colors = {
+          background = "282828f2";
+          text = "ffffffff";
+          match = "d3869bff";
+          selection = "494949ff";
+          selection-text = "ffffffff";
+          border = "ffffffff";
+        };
+      };
+    };
+
+    swaylock = {
+      enable = true;
+      settings = {
+        color = "282828";
+        font-size = 24;
+        indicator-idle-visible = true;
+        show-failed-attempts = true;
+      };
     };
   };
 }

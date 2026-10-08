@@ -2,6 +2,7 @@
   config,
   pkgs ? import <nixpkgs> { },
   lib,
+  lazyvim,
   ...
 }:
 
@@ -9,22 +10,52 @@
   imports = [
     ./sway.nix
     ./dev-packages.nix
+    lazyvim.homeManagerModules.default
   ];
 
-  home.file = {
-    ".config/kitty" = {
-      source = ./dotfiles/kitty;
-      recursive = true;
-      force = true;
+  home = {
+    file = {
+      ".config/kitty" = {
+        source = ./dotfiles/kitty;
+        recursive = true;
+        force = true;
+      };
     };
-  };
 
-  home.stateVersion = "26.05";
+    stateVersion = "26.05";
 
-  home.sessionPath = [ "$HOME/.npm-global/bin" ];
+    sessionPath = [ "$HOME/.npm-global/bin" ];
 
-  home.sessionVariables = {
-    XDG_DATA_DIRS = "$HOME/.local/share:$XDG_DATA_DIRS";
+    sessionVariables = {
+      XDG_DATA_DIRS = "$HOME/.local/share:$XDG_DATA_DIRS";
+    };
+
+    packages = with pkgs; [
+      mixxx
+      grim
+      flameshot
+      navi
+      superfile
+      kitty
+      gimp
+      libreoffice
+      puredata
+      crosspipe
+      milkytracker
+      wordnet
+      reaper
+      gnupg
+      pinentry-curses
+      pass
+      aspell
+      aspellDicts.en
+      autotiling
+      wev
+      glab
+      playerctl
+      yazi
+      emacsPackages.treesit-grammars.with-all-grammars
+    ];
   };
 
   programs = {
@@ -112,6 +143,54 @@
     lazygit = {
       enable = true;
     };
+
+    lazyvim = {
+      enable = true;
+
+      extras = {
+        lang = {
+          nix.enable = true;
+          python = {
+            enable = true;
+            installDependencies = true;
+            installRuntimeDependencies = true;
+          };
+          typescript.enable = true;
+        };
+      };
+
+      extraPackages = with pkgs; [
+        nixd
+        nixfmt
+        curl
+        pyright
+        ruff
+        typescript-language-server
+        vscode-langservers-extracted
+        statix
+        nil
+      ];
+
+      plugins = {
+        devdocs = ''
+          return {
+            "ayoisaiah/nvim-devdocs",
+            dependencies = {
+              "nvim-lua/plenary.nvim",
+              "nvim-telescope/telescope.nvim",
+              "nvim-treesitter/nvim-treesitter",
+            },
+            opts = {
+              ensure_installed = { "python~3.12", "django~5.0", "html", "css", "javascript", "typescript" },
+            },
+            keys = {
+              { "<leader>sD", "<cmd>DevdocsOpenFloat<cr>", desc = "DevDocs (float)" },
+              { "<leader>sd", "<cmd>DevdocsOpen<cr>", desc = "DevDocs (buffer)" },
+            },
+          }
+        '';
+      };
+    };
   };
 
   services = {
@@ -130,31 +209,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    mixxx
-    grim
-    flameshot
-    navi
-    superfile
-    kitty
-    gimp
-    libreoffice
-    puredata
-    crosspipe
-    milkytracker
-    wordnet
-    reaper
-    gnupg
-    pinentry-curses
-    pass
-    aspell
-    aspellDicts.en
-    autotiling
-    wev
-    glab
-    playerctl
-    yazi
-    emacsPackages.treesit-grammars.with-all-grammars
-  ];
 }
