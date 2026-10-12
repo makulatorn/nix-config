@@ -12,6 +12,11 @@
     enable = true;
 
     extras = {
+      editor = {
+        navic.enable = true;
+      };
+      ui.mini-indentscope.enable = true;
+
       lang = {
         nix.enable = true;
         python = {
@@ -68,10 +73,28 @@
         }
       '';
 
-      colorscheme = ''
+      navbuddy = ''
         return {
-          "LazyVim/LazyVim",
-          opts = { colorscheme = "quiet" },
+          "SmiteshP/nvim-navbuddy",
+          dependencies = {
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim",
+          },
+          opts = function()
+            local actions = require("nvim-navbuddy.actions")
+            return {
+              lsp = { auto_attach = true },
+              mappings = {
+                ["<Up>"] = actions.previous_sibling(),
+                ["<Down>"] = actions.next_sibling(),
+                ["<Left>"] = actions.parent(),
+                ["<Right>"] = actions.children(),
+              },
+            }
+          end,
+          keys = {
+            { "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
+          },
         }
       '';
     };

@@ -103,7 +103,8 @@
         dgitconf = "docker exec -u 0 easyrf git config --global --add safe.directory /app";
         precom = "docker exec -u 0 -it easyrf pre-commit run";
         dkill = "sudo docker rm --force";
-        dmurder = "docker stop $(docker ps -a -q)";
+        life = "~/scripts/start.fish";
+        death = "dkill easyrf easyrfdb mailhog redis";
         doomconf = "cd /home/trasha/.config/doom";
         easypodup = "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
         easypodown = "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
