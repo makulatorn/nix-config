@@ -40,6 +40,12 @@
       nil
     ];
 
+    config = {
+      keymaps = ''
+        vim.keymap.set("n", "<leader>b.", "<cmd>%y+<cr>", { desc = "Yank file to clipboard" })
+      '';
+    };
+
     plugins = {
       devdocs = ''
         return {
