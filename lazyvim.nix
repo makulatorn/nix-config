@@ -59,8 +59,8 @@
             ensure_installed = { "python~3.12", "django~5.0", "html", "css", "javascript", "typescript", "nix" },
           },
           keys = {
-            { "<leader>sD", "<cmd>DevdocsOpenFloat<cr>", desc = "DevDocs (float)" },
-            { "<leader>sd", "<cmd>DevdocsOpen<cr>", desc = "DevDocs (buffer)" },
+            { "<leader>cb", "<cmd>DevdocsOpenFloat<cr>", desc = "DevDocs (float)" },
+            { "<leader>cD", "<cmd>DevdocsOpen<cr>", desc = "DevDocs (buffer)" },
           },
         }
       '';

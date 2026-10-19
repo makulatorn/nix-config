@@ -54,6 +54,7 @@
       playerctl
       yazi
       emacsPackages.treesit-grammars.with-all-grammars
+      wl-kbptr
     ];
   };
 

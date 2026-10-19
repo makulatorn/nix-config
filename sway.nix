@@ -91,6 +91,10 @@
           # keyboard layout
           "${mod}+shift+tab" = "input type:keyboard xkb_switch_layout next";
 
+          # keyboard pointer
+          "${mod}+g" = "exec wl-kbptr";
+          "${mod}+shift+g" = "mode Mouse";
+
           # Logout
           "${mod}+shift+x" = "exec loginctl lock-session";
 
@@ -101,6 +105,26 @@
           "--locked XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
           "--locked XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
         };
+      modes.Mouse = {
+        "a" = "mode default, exec 'wl-kbptr-sway-active-win; swaymsg mode Mouse'";
+        "Shift+a" = "mode default, exec 'wl-kbptr; swaymsg mode Mouse'";
+
+        # move
+        "h" = "seat seat0 cursor move -15 0";
+        "j" = "seat seat0 cursor move 0 15";
+        "k" = "seat seat0 cursor move 0 -15";
+        "l" = "seat seat0 cursor move 15 0";
+
+        # left / middle / right button
+        "s" = "seat seat0 cursor press button1";
+        "--release s" = "seat seat0 cursor release button1";
+        "d" = "seat seat0 cursor press button2";
+        "--release d" = "seat seat0 cursor release button2";
+        "f" = "seat seat0 cursor press button3";
+        "--release f" = "seat seat0 cursor release button3";
+
+        "Escape" = "mode default";
+      };
     };
     extraConfig = ''
       output * bg #282828 solid_color
