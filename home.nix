@@ -132,6 +132,7 @@
           fuck = "commit --amend --no-edit";
           FUCK = "commit --amend -a";
           pushf = "push --force-with-lease";
+          gigapush = "!git push origin main && git push gitlab main";
         };
       };
     };
