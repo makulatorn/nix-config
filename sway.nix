@@ -105,6 +105,7 @@
           "--locked XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
           "--locked XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
         };
+
       modes.Mouse = {
         "a" = "mode default, exec 'wl-kbptr-sway-active-win; swaymsg mode Mouse'";
         "Shift+a" = "mode default, exec 'wl-kbptr; swaymsg mode Mouse'";
@@ -126,6 +127,7 @@
         "Escape" = "mode default";
       };
     };
+
     extraConfig = ''
       output * bg #282828 solid_color
 
