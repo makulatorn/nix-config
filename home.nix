@@ -107,8 +107,6 @@
         life = "~/scripts/start.fish";
         death = "dkill easyrf easyrfdb mailhog redis";
         doomconf = "cd /home/trasha/.config/doom";
-        easypodup = "podman start oracle-free && podman compose -f docker-compose.local.yaml up";
-        easypodown = "podman compose -f docker-compose.local.yaml down && podman stop oracle-free";
       };
     };
 

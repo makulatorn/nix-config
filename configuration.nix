@@ -78,6 +78,7 @@
       fzf
       feh
       nh
+      btop
     ];
   };
 
