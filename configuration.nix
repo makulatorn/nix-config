@@ -262,7 +262,8 @@
     ];
   };
 
-  virtualisation.docker = {
+virtualisation = {
+  docker = {
     enable = true;
     package = pkgs.docker_29;
     rootless = {
@@ -270,10 +271,11 @@
     };
   };
 
-  virtualisation.podman = {
+  podman = {
     enable = true;
     defaultNetwork.settings.dns_enabled = true;
   };
+};
 
   # --- ALLOW UNFREE PKGS ---
   nixpkgs.config.allowUnfree = true;
