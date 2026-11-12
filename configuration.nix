@@ -9,7 +9,6 @@
   environment = {
     # --- SESSION PATH ---
     sessionVariables = {
-      PATH = "$HOME/.nix-profile/bin:/run/current-system/sw/bin:$PATH";
       WLR_DRM_DEVICES = "/dev/dri/card1";
     };
 
@@ -45,7 +44,6 @@
       ripgrep
       xclip
       unzip
-      tmux
       pkgs.gnumake
       pkgs.pkg-config
       vintagestory

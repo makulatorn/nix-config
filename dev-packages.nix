@@ -40,6 +40,7 @@
     # --- FORMATTERS/LINTERS ---
     python3Packages.mypy
     python3Packages.pytest
+    prettier
     prettierd
     shellcheck
     shfmt
@@ -63,7 +64,6 @@
     cmake
     fd
     ripgrep
-    tmux
     git
     haskellPackages.hoogle
     python3Packages.django

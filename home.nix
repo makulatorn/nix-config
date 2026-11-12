@@ -10,6 +10,7 @@
     ./sway.nix
     ./dev-packages.nix
     ./lazyvim.nix
+    ./tmux.nix
   ];
 
   home = {
@@ -23,7 +24,12 @@
 
     stateVersion = "26.05";
 
-    sessionPath = [ "$HOME/.npm-global/bin" ];
+    sessionPath = [ 
+      "$HOME/.npm/bin"
+      "$HOME/.npm-global/bin"
+      "$HOME/.emacs.d/bin"
+      "$HOME/.guix-profile/bin"      
+    ];
 
     sessionVariables = {
       XDG_DATA_DIRS = "$HOME/.local/share:$XDG_DATA_DIRS";
@@ -70,9 +76,6 @@
       enable = true;
 
       shellInit = ''
-        set -gx PATH $HOME/.npm/bin $PATH
-        set -gx PATH $HOME/.emacs.d/bin $PATH
-        set -gx PATH $HOME/.guix-profile/bin $PATH
         set -gx GUIX_LOCPATH $HOME/.guix-profile/lib/locale
         set -gx _PR_SHELL fish
         pay-respects fish --alias | source
@@ -112,6 +115,9 @@
 
     git = {
       enable = true;
+      ignores = [
+        "Session.vim"
+      ];
       settings = {
         user = {
           name = "sasha";

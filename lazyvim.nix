@@ -26,6 +26,8 @@
         };
         typescript.enable = true;
       };
+
+      formatting.prettier.enable = true;
     };
 
     extraPackages = with pkgs; [
@@ -38,6 +40,8 @@
       vscode-langservers-extracted
       statix
       nil
+      wl-clipboard
+      prettier
     ];
 
     config = {
@@ -47,6 +51,10 @@
     };
 
     plugins = {
+      obsession = ''
+        return { "tpope/vim-obsession" }
+      '';
+
       devdocs = ''
         return {
           "ayoisaiah/nvim-devdocs",
