@@ -46,7 +46,6 @@
       unzip
       pkgs.gnumake
       pkgs.pkg-config
-      vintagestory
       google-chrome
       microsoft-edge
       transmission_4-gtk
@@ -262,20 +261,20 @@
     ];
   };
 
-virtualisation = {
-  docker = {
-    enable = true;
-    package = pkgs.docker_29;
-    rootless = {
-      enable = false;
+  virtualisation = {
+    docker = {
+      enable = true;
+      package = pkgs.docker_29;
+      rootless = {
+        enable = false;
+      };
+    };
+
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
-
-  podman = {
-    enable = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-};
 
   # --- ALLOW UNFREE PKGS ---
   nixpkgs.config.allowUnfree = true;
