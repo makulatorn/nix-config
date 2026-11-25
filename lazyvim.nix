@@ -111,6 +111,13 @@
           },
         }
       '';
+
+      colorscheme = ''
+        return {
+        "lazyVim/lazyVim",
+        opts = { colorscheme = "default" },
+        }
+      '';
     };
   };
 }

@@ -170,6 +170,10 @@
     gamemode.enable = true;
 
     command-not-found.enable = true;
+  
+    gpu-screen-recorder = {
+      enable = true;
+    };
   };
 
   console = {
