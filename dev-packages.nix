@@ -5,14 +5,8 @@
     # --- LANG RUNTIME/MANAGERS ---
     python3
     python3Packages.pip
-    conda
-    pyenv
-    pipenv
-    poetry
     nodejs
     typescript
-    rustc
-    cargo
     ghc
     cabal-install
     clojure
@@ -28,24 +22,19 @@
     ruff
     bash-language-server
     typescript-language-server
-    haskell-language-server
     yaml-language-server
     nixd
-    rust-analyzer
     marksman
     taplo
     emmet-ls
     clojure-lsp
 
     # --- FORMATTERS/LINTERS ---
-    python3Packages.mypy
-    python3Packages.pytest
     prettier
     prettierd
     shellcheck
     shfmt
     dockfmt
-    ktlint
     nixfmt
     stylelint
     cljfmt
@@ -65,16 +54,7 @@
     fd
     ripgrep
     git
-    haskellPackages.hoogle
-    python3Packages.django
-    python3Packages.requests
-    python3Packages.httpx
-    python3Packages.uvicorn
-    python3Packages.weasyprint
-    python3Packages.python-magic
     javaPackages.compiler.openjdk25
     pre-commit
-    python3Packages.pytest
-    python3Packages.psycopg2-binary
   ];
 }
